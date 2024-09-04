@@ -1,0 +1,44 @@
+Script started on Wed Sep  4 14:37:12 2024
+[1m[7m%[27m[1m[0m                                                                                                                                                                                                     ]2;mmiglioranza@Manuels-MBP:~/Documents/github/helsinky-moocs/devops/kubernetes/part1/1.01]1;..es/part1/1.01]7;file://Manuels-MBP.fibertel.com.ar/Users/mmiglioranza/Documents/github/helsinky-moocs/devops/kubernetes/part1/1.01\[0m[27m[24m[J[01;32m➜  [36m1.01[00m [K[?1h=[?2004h[0m[27m[24m[J[01;32m➜  [36m1.01[00m [01;34mgit:([31mmain[34m) [33m✗[00m [Kscript ex-1.01.txt[18Dminikube start    deletestop  [13Dkubectl logs hashgenerator-dep-69b6cd776-dh7vg[33Dk8s-ex.1.01-865679d5c8-872pv     [33Dcreate deployment k8s-ex.1.01 --image=mmiglioranza22/k8s-ex.1.01[?1l>[?2004l
+]2;kubectl create deployment k8s-ex.1.01 --image=mmiglioranza22/k8s-ex.1.01]1;kubectl[33;1mWarning:[0m metadata.name: this is used in Pod names and hostnames, which can result in surprising behavior; a DNS label is recommended: [must not contain dots]
+deployment.apps/k8s-ex.1.01 created
+[1m[7m%[27m[1m[0m                                                                                                                                                                                                     ]2;mmiglioranza@Manuels-MBP:~/Documents/github/helsinky-moocs/devops/kubernetes/part1/1.01]1;..es/part1/1.01]7;file://Manuels-MBP.fibertel.com.ar/Users/mmiglioranza/Documents/github/helsinky-moocs/devops/kubernetes/part1/1.01\[0m[27m[24m[J[01;32m➜  [36m1.01[00m [01;34mgit:([31mmain[34m) [33m✗[00m [K[?1h=[?2004hkkubectl get deployments.apps[1m [0m[0m [?1l>[?2004l
+]2;kubectl get deployments.apps]1;kubectlNAME          READY   UP-TO-DATE   AVAILABLE   AGE
+k8s-ex.1.01   0/1     1            0           7s
+[1m[7m%[27m[1m[0m                                                                                                                                                                                                     ]2;mmiglioranza@Manuels-MBP:~/Documents/github/helsinky-moocs/devops/kubernetes/part1/1.01]1;..es/part1/1.01]7;file://Manuels-MBP.fibertel.com.ar/Users/mmiglioranza/Documents/github/helsinky-moocs/devops/kubernetes/part1/1.01\[0m[27m[24m[J[01;32m➜  [36m1.01[00m [01;34mgit:([31mmain[34m) [33m✗[00m [K[?1h=[?2004hkubectl get deployments.apps[?1l>[?2004l
+]2;kubectl get deployments.apps]1;kubectlNAME          READY   UP-TO-DATE   AVAILABLE   AGE
+k8s-ex.1.01   1/1     1            1           15s
+[1m[7m%[27m[1m[0m                                                                                                                                                                                                     ]2;mmiglioranza@Manuels-MBP:~/Documents/github/helsinky-moocs/devops/kubernetes/part1/1.01]1;..es/part1/1.01]7;file://Manuels-MBP.fibertel.com.ar/Users/mmiglioranza/Documents/github/helsinky-moocs/devops/kubernetes/part1/1.01\[0m[27m[24m[J[01;32m➜  [36m1.01[00m [01;34mgit:([31mmain[34m) [33m✗[00m [K[?1h=[?2004hkubectl get deployments.apps[20Dcreate deployment k8s-ex.1.01 --image=mmiglioranza22/k8s-ex.1.01[72Dscript ex-1.01.txt                                                      [54D[18Dminikube start    deletestop  [13Dkubectl logs hashgenerator-dep-69b6cd776-dh7vg[33Dk8s-ex.1.01-865679d5c8-872pv          [11D           [11D            
+[0mdaemonsets/                   jobs/                         pods/                         replicationcontrollers/       statefulsets/                                             
+[Jdeployments/                  [Jk8s-ex.1.01-7f565fb884-hhfmw  [Jreplicasets/                  [Jservices/                     [J                                                        [A[A[0m[27m[24m[21Ckubectl logs[K[1Cdaemonsets/
+[7mdaemonsets/                 [0m  jobs/                         pods/                         replicationcontrollers/       statefulsets/                                             [K
+[Jdeployments/                  [Jk8s-ex.1.01-7f565fb884-hhfmw  [Jreplicasets/                  [Jservices/                     [J                                                        [A[A[0m[27m[24m[21Ckubectl logs daemonsets/[K
+[7mdaemonsets/                 [0m  [7mdaemonsets/                 [0m  [A[0m[27m[24m[21Ckubectl logs daemonsets/[K[10Deployments/
+[0mdaemonsets/                   [1B[7mdeployments/                [0m  [A[A[0m[27m[24m[21Ckubectl logs deployments/[K[12Djobs/       
+[30C[7mjobs/                       [0m  [1Bdeployments/                  [A[A[0m[27m[24m[21Ckubectl logs jobs/[Kk8s-ex.1.01-7f565fb884-hhfmw
+[30C[0mjobs/                         [1B[30C[7mk8s-ex.1.01-7f565fb884-hhfmw[0m  [A[A[0m[27m[24m[21Ckubectl logs k8s-ex.1.01-7f565fb884-hhfmw[K
+[J[A[62C[1m [0m[0m [?1l>[?2004l
+[J]2;kubectl logs k8s-ex.1.01-7f565fb884-hhfmw]1;kubectl
+> app1@1.0.0 start
+> node index.js
+
+2024-09-04T17:37:33.584Z: f84cace4-bd4b-49e1-a583-3da20510618a
+2024-09-04T17:37:38.597Z: 1cb60081-b300-40f9-82fc-036a09a666c9
+2024-09-04T17:37:43.600Z: a1098c28-5f9b-4b88-8c29-f4d2237e8236
+2024-09-04T17:37:48.606Z: ce2264dc-d19d-4b7e-a0b4-bf6e8e31baa0
+[1m[7m%[27m[1m[0m                                                                                                                                                                                                     ]2;mmiglioranza@Manuels-MBP:~/Documents/github/helsinky-moocs/devops/kubernetes/part1/1.01]1;..es/part1/1.01]7;file://Manuels-MBP.fibertel.com.ar/Users/mmiglioranza/Documents/github/helsinky-moocs/devops/kubernetes/part1/1.01\[0m[27m[24m[J[01;32m➜  [36m1.01[00m [01;34mgit:([31mmain[34m) [33m✗[00m [K[?1h=[?2004hkubectl logs k8s-ex.1.01-7f565fb884-hhfmw[11D-k8s-ex.1.01-7f565fb884-hhfmw[28Dfk8s-ex.1.01-7f565fb884-hhfmw[28D k8s-ex.1.01-7f565fb884-hhfmw[28D[?1l>[?2004l
+]2;kubectl logs -f k8s-ex.1.01-7f565fb884-hhfmw]1;kubectl
+> app1@1.0.0 start
+> node index.js
+
+2024-09-04T17:37:33.584Z: f84cace4-bd4b-49e1-a583-3da20510618a
+2024-09-04T17:37:38.597Z: 1cb60081-b300-40f9-82fc-036a09a666c9
+2024-09-04T17:37:43.600Z: a1098c28-5f9b-4b88-8c29-f4d2237e8236
+2024-09-04T17:37:48.606Z: ce2264dc-d19d-4b7e-a0b4-bf6e8e31baa0
+2024-09-04T17:37:53.614Z: 948fc1ab-49e9-44c5-b803-e2c6f8c81186
+2024-09-04T17:37:58.618Z: 7eafbbd7-0c00-49f2-a785-143034a8fe2c
+2024-09-04T17:38:03.623Z: 7ea33417-2644-40a6-aa9d-4c9aad1c36c6
+^C
+[1m[7m%[27m[1m[0m                                                                                                                                                                                                     ]2;mmiglioranza@Manuels-MBP:~/Documents/github/helsinky-moocs/devops/kubernetes/part1/1.01]1;..es/part1/1.01]7;file://Manuels-MBP.fibertel.com.ar/Users/mmiglioranza/Documents/github/helsinky-moocs/devops/kubernetes/part1/1.01\[0m[27m[24m[J[01;31m➜  [36m1.01[00m [01;34mgit:([31mmain[34m) [33m✗[00m [K[?1h=[?2004heexit[?1l>[?2004l
+]2;exit]1;exit
+Script done on Wed Sep  4 14:38:06 2024
