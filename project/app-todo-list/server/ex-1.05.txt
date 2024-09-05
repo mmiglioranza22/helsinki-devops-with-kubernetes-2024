@@ -1,0 +1,51 @@
+Script started on Thu Sep  5 14:29:32 2024
+[1m[7m%[27m[1m[0m                                                                                                                                                      ]2;mmiglioranza@Manuels-MBP:~/Documents/github/helsinky-moocs/devops/kubernetes/project/app-todo-list/server]1;..o-list/server]7;file://Manuels-MBP.fibertel.com.ar/Users/mmiglioranza/Documents/github/helsinky-moocs/devops/kubernetes/project/app-todo-list/server\[0m[27m[24m[J[01;32m➜  [36mserver[00m [K[?1h=[?2004h[0m[27m[24m[J[01;32m➜  [36mserver[00m [01;34mgit:([31mmain[34m) [33m✗[00m [Kkkubectl ap
+[0mapi-resources  -- Print the supported API resources on the server
+api-versions   -- Print the supported API versions on the server, in the form of "group/version"
+[Japply          -- Apply a configuration to a resource by file name or stdin[J[3A[0m[27m[24m[23Ckubectl ap[K
+[J[A[33Cply -f https://raw.githubusercontent.com/kubernetes-hy/material-example/master/app2/manifests/deployment.yaml
+[K[A[142C[27D1[1B[K[A[142C[102D[77P[25C                                                                             [1B[K[A[65C[?1l>[?2004l[1B[J]2;kubectl apply -f manifests/deployment.yaml]1;kubectldeployment.apps/project-todo-app created
+[1m[7m%[27m[1m[0m                                                                                                                                                      ]2;mmiglioranza@Manuels-MBP:~/Documents/github/helsinky-moocs/devops/kubernetes/project/app-todo-list/server]1;..o-list/server]7;file://Manuels-MBP.fibertel.com.ar/Users/mmiglioranza/Documents/github/helsinky-moocs/devops/kubernetes/project/app-todo-list/server\[0m[27m[24m[J[01;32m➜  [36mserver[00m [01;34mgit:([31mmain[34m) [33m✗[00m [K[?1h=[?2004hkkubectl dep   get deploy[?1l>[?2004l
+]2;kubectl get deploy]1;kubectlNAME                READY   UP-TO-DATE   AVAILABLE   AGE
+hashgenerator-dep   1/1     1            1           28m
+hashresponse-dep    1/1     1            1           5m37s
+project-todo-app    0/1     1            0           8s
+[1m[7m%[27m[1m[0m                                                                                                                                                      ]2;mmiglioranza@Manuels-MBP:~/Documents/github/helsinky-moocs/devops/kubernetes/project/app-todo-list/server]1;..o-list/server]7;file://Manuels-MBP.fibertel.com.ar/Users/mmiglioranza/Documents/github/helsinky-moocs/devops/kubernetes/project/app-todo-list/server\[0m[27m[24m[J[01;32m➜  [36mserver[00m [01;34mgit:([31mmain[34m) [33m✗[00m [K[?1h=[?2004hkkubectl port-forward[1m [0m[0m 
+[0mdaemonsets/                         hashresponse-dep-755b5b5dd7-62hp8   project-todo-app-67d9c6b8bb-vxbvb   services/                         
+deployments/                        jobs/                               replicasets/                        statefulsets/                     
+[Jhashgenerator-dep-7c5cfb9744-r7m4z  [Jpods/                               [Jreplicationcontrollers/             [J                                  [3A[0m[27m[24m[23Ckubectl port-forward[K[1Cdeployments/
+[J[J[0mdeployments/hashgenerator-dep  [Jdeployments/hashresponse-dep   [Jdeployments/project-todo-app [J[A[0m[27m[24m[23Ckubectl port-forward deployments/[Khashgenerator-dep
+[J[7mdeployments/hashgenerator-dep[0m  [Jdeployments/hashresponse-dep   [Jdeployments/project-todo-app [J[A[0m[27m[24m[23Ckubectl port-forward deployments/hashgenerator-dep[K
+[7mdeployments/hashgenerator-dep[0m  [7mdeployments/hashgenerator-dep[0m  [A[0m[27m[24m[23Ckubectl port-forward deployments/hashgenerator-dep[K[13Dresponse-dep 
+[31C[7mdeployments/hashresponse-dep [0m  deployments/hashgenerator-dep  [A[0m[27m[24m[23Ckubectl port-forward deployments/hashresponse-dep[K[16Dproject-todo-ap[1C
+[62C[7mdeployments/project-todo-app [0m[31Cdeployments/hashresponse-dep   [A[0m[27m[24m[23Ckubectl port-forward deployments/project-todo-app[K
+[J[A[72C[1m [0m[0m 3001:8080[?1l>[?2004l
+[J]2;kubectl port-forward deployments/project-todo-app 3001:8080]1;kubectlForwarding from 127.0.0.1:3001 -> 8080
+Forwarding from [::1]:3001 -> 8080
+Handling connection for 3001
+Handling connection for 3001
+Handling connection for 3001
+^C[1m[7m%[27m[1m[0m                                                                                                                                                      ]2;mmiglioranza@Manuels-MBP:~/Documents/github/helsinky-moocs/devops/kubernetes/project/app-todo-list/server]1;..o-list/server]7;file://Manuels-MBP.fibertel.com.ar/Users/mmiglioranza/Documents/github/helsinky-moocs/devops/kubernetes/project/app-todo-list/server\[0m[27m[24m[J[01;32m➜  [36mserver[00m [01;34mgit:([31mmain[34m) [33m✗[00m [K[?1h=[?2004hkkubectl logs[1m [0m[0m -f[1m [0m[0m 
+[0mdaemonsets/                         hashresponse-dep-755b5b5dd7-62hp8   project-todo-app-67d9c6b8bb-vxbvb   services/                         
+deployments/                        jobs/                               replicasets/                        statefulsets/                     
+[Jhashgenerator-dep-7c5cfb9744-r7m4z  [Jpods/                               [Jreplicationcontrollers/             [J                                  [3A[0m[27m[24m[23Ckubectl logs -f[K[1Cdeployments/
+[J[J[0mdeployments/hashgenerator-dep  [Jdeployments/hashresponse-dep   [Jdeployments/project-todo-app [J[A[0m[27m[24m[23Ckubectl logs -f deployments/[Khashgenerator-dep
+[J[7mdeployments/hashgenerator-dep[0m  [Jdeployments/hashresponse-dep   [Jdeployments/project-todo-app [J[A[0m[27m[24m[23Ckubectl logs -f deployments/hashgenerator-dep[K
+[7mdeployments/hashgenerator-dep[0m  [7mdeployments/hashgenerator-dep[0m  [A[0m[27m[24m[23Ckubectl logs -f deployments/hashgenerator-dep[K[13Dresponse-dep 
+[31C[7mdeployments/hashresponse-dep [0m  deployments/hashgenerator-dep  [A[0m[27m[24m[23Ckubectl logs -f deployments/hashresponse-dep[K[16Dproject-todo-ap[1C
+[62C[7mdeployments/project-todo-app [0m[31Cdeployments/hashresponse-dep   [A[0m[27m[24m[23Ckubectl logs -f deployments/project-todo-app[K
+[J[A[67C[1m [0m[0m [?1l>[?2004l
+[J]2;kubectl logs -f deployments/project-todo-app]1;kubectl
+> server@1.0.0 start
+> node index.js
+
+Server listening to port: 8080
+[0mGET /api/notes [33m404[0m 5.450 ms - 148[0m
+[0mGET / [33m404[0m 0.865 ms - 139[0m
+[0mGET / [33m404[0m 1.348 ms - 139[0m
+[0mGET / [33m404[0m 0.994 ms - 139[0m
+[0mGET / [33m404[0m 0.607 ms - 139[0m
+^C
+[1m[7m%[27m[1m[0m                                                                                                                                                      ]2;mmiglioranza@Manuels-MBP:~/Documents/github/helsinky-moocs/devops/kubernetes/project/app-todo-list/server]1;..o-list/server]7;file://Manuels-MBP.fibertel.com.ar/Users/mmiglioranza/Documents/github/helsinky-moocs/devops/kubernetes/project/app-todo-list/server\[0m[27m[24m[J[01;31m➜  [36mserver[00m [01;34mgit:([31mmain[34m) [33m✗[00m [K[?1h=[?2004heexit[?1l>[?2004l
+]2;exit]1;exit
+Script done on Thu Sep  5 14:31:26 2024

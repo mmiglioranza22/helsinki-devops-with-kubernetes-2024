@@ -15,6 +15,9 @@ spec:
       containers:
         - name: todo-app
           image: mmiglioranza22/project-todo-app
+          env:
+            - name: ENV_VAR
+              value: "This is the ENV_VAR value: Hello!"
           # https://kubernetes.io/docs/concepts/configuration/manage-resources-containers/
           resources:
             requests:
