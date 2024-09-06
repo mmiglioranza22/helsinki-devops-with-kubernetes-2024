@@ -1,17 +1,19 @@
-apiVersion: v1
-kind: Service
-metadata:
-  name: todo-app-svc
-spec:
-  type: NodePort
-  selector:
-    app: todo-app # This is the app as declared in the deployment.
-  ports:
-    - name: http
-      protocol: TCP
-      port: 1234 # This is a port that is available internally to the cluster, in this case it can be ~ anything
-      nodePort: 30080 # This is the port that is available outside. Value for nodePort can be between 30000-32767
-      targetPort: 8080 # This is the target port for the app running (todo-app). It has to match the containerPort stablished for it in the deployment.yaml
+# ex-1.06 - NodePort connection (layer 4)
+
+# apiVersion: v1
+# kind: Service
+# metadata:
+#   name: todo-app-svc
+# spec:
+#   type: NodePort
+#   selector:
+#     app: todo-app # This is the app as declared in the deployment.
+#   ports:
+#     - name: http
+#       protocol: TCP
+#       port: 1234 # This is a port that is available internally to the cluster, in this case it can be ~ anything
+#       nodePort: 30080 # This is the port that is available outside. Value for nodePort can be between 30000-32767
+#       targetPort: 8080 # This is the target port for the app running (todo-app). It has to match the containerPort stablished for it in the deployment.yaml
 
 # The service todo-app-svc will be exposed internally to cluster applications on port 1234
 # and externally to the cluster on the node IP adress on 30080 (check in any case for minikube specific case)
@@ -34,3 +36,17 @@ spec:
 #
 # That command runs as a process, creating a tunnel to the cluster and exposes the service directly to any program running on the host operating system
 
+# ex-1.08 - Ingress connection (layer 7)
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: todo-app-svc
+spec:
+  type: ClusterIP
+  selector:
+    app: todo-app
+  ports:
+    - port: 1234 # self. Inner port available within the clusted
+      protocol: TCP
+      targetPort: 8080 # The app's exposed port (defined 8080 in the source code)
