@@ -1,0 +1,85 @@
+Script started on Fri Sep  6 14:13:40 2024
+/Users/mmiglioranza/.zshrc:source:122: no such file or directory: /Users/mmiglioranza/.aliases/alias-kubectl/kubectl-aliases
+[1m[7m%[27m[1m[0m                                                                                                                                                      ]2;mmiglioranza@Manuels-MBP:~/Documents/github/helsinky-moocs/devops/kubernetes/part1/1.07]1;..es/part1/1.07]7;file://Manuels-MBP.fibertel.com.ar/Users/mmiglioranza/Documents/github/helsinky-moocs/devops/kubernetes/part1/1.07\[0m[27m[24m[J[01;31m➜  [36m1.07[00m [K[?1h=[?2004h[0m[27m[24m[J[01;31m➜  [36m1.07[00m [01;34mgit:([31mmain[34m) [33m✗[00m [Kkk3d cluster deletecrea[2C --port 8082:30080@agent:0 -p 8081:80@loadbalancer --agents 2[15D[P[34C [35D[P[34C [35D[P[34C [35D[P[34C [35D[P[34C [35D[P[34C [35D[P[34C [35D[P[34C [35D[P[34C [35D[P[34C [35D[P[34C [35D[P[34C [35D[P[34C [35D[P[34C [35D[P[34C [35D[P[34C [35D[P[34C [35D[P[34C [35D[P[34C [35D[P[34C [35D[P[34C [35D[P[34C [35D[P[34C [35D[P[34C [35D[P[33C [35D[P[33C [35D[?1l>[?2004l
+]2;k3d cluster create -p 8081:80@loadbalancer --agents 2]1;k3d[36mINFO[0m[0000] portmapping '8081:80' targets the loadbalancer: defaulting to [servers:*:proxy agents:*:proxy] 
+[36mINFO[0m[0000] Prep: Network                                
+[36mINFO[0m[0000] Created network 'k3d-k3s-default'            
+[36mINFO[0m[0000] Created image volume k3d-k3s-default-images  
+[36mINFO[0m[0000] Starting new tools node...                   
+[36mINFO[0m[0001] Creating node 'k3d-k3s-default-server-0'     
+[36mINFO[0m[0001] Pulling image 'ghcr.io/k3d-io/k3d-tools:5.7.3' 
+[36mINFO[0m[0003] Pulling image 'docker.io/rancher/k3s:v1.30.3-k3s1' 
+[36mINFO[0m[0003] Starting node 'k3d-k3s-default-tools'        
+[36mINFO[0m[0011] Creating node 'k3d-k3s-default-agent-0'      
+[36mINFO[0m[0011] Creating node 'k3d-k3s-default-agent-1'      
+[36mINFO[0m[0011] Creating LoadBalancer 'k3d-k3s-default-serverlb' 
+[36mINFO[0m[0013] Pulling image 'ghcr.io/k3d-io/k3d-proxy:5.7.3' 
+[36mINFO[0m[0017] Using the k3d-tools node to gather environment information 
+[36mINFO[0m[0017] Starting new tools node...                   
+[36mINFO[0m[0017] Starting node 'k3d-k3s-default-tools'        
+[36mINFO[0m[0018] Starting cluster 'k3s-default'               
+[36mINFO[0m[0018] Starting servers...                          
+[36mINFO[0m[0019] Starting node 'k3d-k3s-default-server-0'     
+[36mINFO[0m[0022] Starting agents...                           
+[36mINFO[0m[0022] Starting node 'k3d-k3s-default-agent-0'      
+[36mINFO[0m[0022] Starting node 'k3d-k3s-default-agent-1'      
+[36mINFO[0m[0025] Starting helpers...                          
+[36mINFO[0m[0025] Starting node 'k3d-k3s-default-serverlb'     
+[36mINFO[0m[0031] Injecting records for hostAliases (incl. host.k3d.internal) and for 5 network members into CoreDNS configmap... 
+[36mINFO[0m[0034] Cluster 'k3s-default' created successfully!  
+[36mINFO[0m[0034] You can now use it like this:                
+kubectl cluster-info
+[1m[7m%[27m[1m[0m                                                                                                                                                      ]2;mmiglioranza@Manuels-MBP:~/Documents/github/helsinky-moocs/devops/kubernetes/part1/1.07]1;..es/part1/1.07]7;file://Manuels-MBP.fibertel.com.ar/Users/mmiglioranza/Documents/github/helsinky-moocs/devops/kubernetes/part1/1.07\[0m[27m[24m[J[01;32m➜  [36m1.07[00m [01;34mgit:([31mmain[34m) [33m✗[00m [K[?1h=[?2004hk3d cluster create -p 8081:80@loadbalancer --agents 2[53Dscript ingress-example-k3d.txt                       [23D[30Ddocker system prune -f -a --volumes[28Dimages                      [22Dps -a [12Dk3d cluster delete[18Dcurl localhost:80821/hash     /hash[24Dkubectl get deploy,pods,svc,ing[23Dapply -f manifests/    [19Dget deploy,pods,svc,ing[23Dapply -f manifests/    [?1l>[?2004l
+]2;kubectl apply -f manifests/]1;kubectldeployment.apps/hashgenerator2-dep created
+ingress.networking.k8s.io/hashgenerator2-ingress created
+service/hashgenerator2-svc created
+[1m[7m%[27m[1m[0m                                                                                                                                                      ]2;mmiglioranza@Manuels-MBP:~/Documents/github/helsinky-moocs/devops/kubernetes/part1/1.07]1;..es/part1/1.07]7;file://Manuels-MBP.fibertel.com.ar/Users/mmiglioranza/Documents/github/helsinky-moocs/devops/kubernetes/part1/1.07\[0m[27m[24m[J[01;32m➜  [36m1.07[00m [01;34mgit:([31mmain[34m) [33m✗[00m [K[?1h=[?2004hkubectl apply -f manifests/[27Dk3d cluster create -p 8081:80@loadbalancer --agents 2[53Dscript ingress-example-k3d.txt                       [23D[30Ddocker system prune -f -a --volumes[28Dimages                      [22Dps -a [12Dk3d cluster delete[18Dcurl localhost:80821/hash     /hash[24Dkubectl get deploy,pods,svc,ing[23Dapply -f manifests/    [19Dget deploy,pods,svc,ing[?1l>[?2004l
+]2;kubectl get deploy,pods,svc,ing]1;kubectlNAME                                 READY   UP-TO-DATE   AVAILABLE   AGE
+deployment.apps/hashgenerator2-dep   0/1     1            0           11s
+
+NAME                                      READY   STATUS              RESTARTS   AGE
+pod/hashgenerator2-dep-66f979d6db-zrlv2   0/1     ContainerCreating   0          11s
+
+NAME                         TYPE        CLUSTER-IP     EXTERNAL-IP   PORT(S)    AGE
+service/hashgenerator2-svc   ClusterIP   10.43.191.19   <none>        2345/TCP   11s
+service/kubernetes           ClusterIP   10.43.0.1      <none>        443/TCP    34s
+
+NAME                                               CLASS    HOSTS   ADDRESS   PORTS   AGE
+ingress.networking.k8s.io/hashgenerator2-ingress   <none>   *                 80      11s
+[1m[7m%[27m[1m[0m                                                                                                                                                      ]2;mmiglioranza@Manuels-MBP:~/Documents/github/helsinky-moocs/devops/kubernetes/part1/1.07]1;..es/part1/1.07]7;file://Manuels-MBP.fibertel.com.ar/Users/mmiglioranza/Documents/github/helsinky-moocs/devops/kubernetes/part1/1.07\[0m[27m[24m[J[01;32m➜  [36m1.07[00m [01;34mgit:([31mmain[34m) [33m✗[00m [K[?1h=[?2004hkubectl get deploy,pods,svc,ing[?1l>[?2004l
+]2;kubectl get deploy,pods,svc,ing]1;kubectlNAME                                 READY   UP-TO-DATE   AVAILABLE   AGE
+deployment.apps/hashgenerator2-dep   0/1     1            0           19s
+
+NAME                                      READY   STATUS              RESTARTS   AGE
+pod/hashgenerator2-dep-66f979d6db-zrlv2   0/1     ContainerCreating   0          19s
+
+NAME                         TYPE        CLUSTER-IP     EXTERNAL-IP   PORT(S)    AGE
+service/hashgenerator2-svc   ClusterIP   10.43.191.19   <none>        2345/TCP   19s
+service/kubernetes           ClusterIP   10.43.0.1      <none>        443/TCP    42s
+
+NAME                                               CLASS    HOSTS   ADDRESS   PORTS   AGE
+ingress.networking.k8s.io/hashgenerator2-ingress   <none>   *                 80      19s
+[1m[7m%[27m[1m[0m                                                                                                                                                      ]2;mmiglioranza@Manuels-MBP:~/Documents/github/helsinky-moocs/devops/kubernetes/part1/1.07]1;..es/part1/1.07]7;file://Manuels-MBP.fibertel.com.ar/Users/mmiglioranza/Documents/github/helsinky-moocs/devops/kubernetes/part1/1.07\[0m[27m[24m[J[01;32m➜  [36m1.07[00m [01;34mgit:([31mmain[34m) [33m✗[00m [K[?1h=[?2004h[?1l>[?2004l
+[1m[7m%[27m[1m[0m                                                                                                                                                      ]2;mmiglioranza@Manuels-MBP:~/Documents/github/helsinky-moocs/devops/kubernetes/part1/1.07]1;..es/part1/1.07]7;file://Manuels-MBP.fibertel.com.ar/Users/mmiglioranza/Documents/github/helsinky-moocs/devops/kubernetes/part1/1.07\[0m[27m[24m[J[01;32m➜  [36m1.07[00m [01;34mgit:([31mmain[34m) [33m✗[00m [K[?1h=[?2004h[?1l>[?2004l
+[1m[7m%[27m[1m[0m                                                                                                                                                      ]2;mmiglioranza@Manuels-MBP:~/Documents/github/helsinky-moocs/devops/kubernetes/part1/1.07]1;..es/part1/1.07]7;file://Manuels-MBP.fibertel.com.ar/Users/mmiglioranza/Documents/github/helsinky-moocs/devops/kubernetes/part1/1.07\[0m[27m[24m[J[01;32m➜  [36m1.07[00m [01;34mgit:([31mmain[34m) [33m✗[00m [K[?1h=[?2004hkubectl get deploy,pods,svc,ing[?1l>[?2004l
+]2;kubectl get deploy,pods,svc,ing]1;kubectlNAME                                 READY   UP-TO-DATE   AVAILABLE   AGE
+deployment.apps/hashgenerator2-dep   1/1     1            1           30s
+
+NAME                                      READY   STATUS    RESTARTS   AGE
+pod/hashgenerator2-dep-66f979d6db-zrlv2   1/1     Running   0          30s
+
+NAME                         TYPE        CLUSTER-IP     EXTERNAL-IP   PORT(S)    AGE
+service/hashgenerator2-svc   ClusterIP   10.43.191.19   <none>        2345/TCP   30s
+service/kubernetes           ClusterIP   10.43.0.1      <none>        443/TCP    53s
+
+NAME                                               CLASS    HOSTS   ADDRESS   PORTS   AGE
+ingress.networking.k8s.io/hashgenerator2-ingress   <none>   *                 80      30s
+[1m[7m%[27m[1m[0m                                                                                                                                                      ]2;mmiglioranza@Manuels-MBP:~/Documents/github/helsinky-moocs/devops/kubernetes/part1/1.07]1;..es/part1/1.07]7;file://Manuels-MBP.fibertel.com.ar/Users/mmiglioranza/Documents/github/helsinky-moocs/devops/kubernetes/part1/1.07\[0m[27m[24m[J[01;32m➜  [36m1.07[00m [01;34mgit:([31mmain[34m) [33m✗[00m [K[?1h=[?2004hook[?1l>[?2004l
+]2;ok]1;okzsh: command not found: ok
+[1m[7m%[27m[1m[0m                                                                                                                                                      ]2;mmiglioranza@Manuels-MBP:~/Documents/github/helsinky-moocs/devops/kubernetes/part1/1.07]1;..es/part1/1.07]7;file://Manuels-MBP.fibertel.com.ar/Users/mmiglioranza/Documents/github/helsinky-moocs/devops/kubernetes/part1/1.07\[0m[27m[24m[J[01;31m➜  [36m1.07[00m [01;34mgit:([31mmain[34m) [33m✗[00m [K[?1h=[?2004hokkubectl get deploy,pods,svc,ing[23Dapply -f manifests/    [27Dk3d cluster create -p 8081:80@loadbalancer --agents 2[53Dscript ingress-example-k3d.txt                       [23D[30Ddocker system prune -f -a --volumes[28Dimages                      [22Dps -a [12Dk3d cluster delete[18Dcurl localhost:80821/hash2     [?1l>[?2004l
+]2;curl localhost:8082]1;curlcurl: (7) Failed to connect to localhost port 8082 after 0 ms: Couldn't connect to server
+[1m[7m%[27m[1m[0m                                                                                                                                                      ]2;mmiglioranza@Manuels-MBP:~/Documents/github/helsinky-moocs/devops/kubernetes/part1/1.07]1;..es/part1/1.07]7;file://Manuels-MBP.fibertel.com.ar/Users/mmiglioranza/Documents/github/helsinky-moocs/devops/kubernetes/part1/1.07\[0m[27m[24m[J[01;31m➜  [36m1.07[00m [01;34mgit:([31mmain[34m) [33m✗[00m [K[?1h=[?2004hcurl localhost:8082[19Dok                 [17Dkubectl get deploy,pods,svc,ing[23Dapply -f manifests/    [27Dk3d cluster create -p 8081:80@loadbalancer --agents 2[53Dscript ingress-example-k3d.txt                       [23D[30Ddocker system prune -f -a --volumes[28Dimages                      [22Dps -a [12Dk3d cluster delete[18Dcurl localhost:80821/hash[?1l>[?2004l
+]2;curl localhost:8081/hash]1;curl"2024-09-06T17:14:58.477Z: fe1739a2-1dbe-4843-901e-d2b6d6c054bb"[1m[7m%[27m[1m[0m                                                                                                                                                      ]2;mmiglioranza@Manuels-MBP:~/Documents/github/helsinky-moocs/devops/kubernetes/part1/1.07]1;..es/part1/1.07]7;file://Manuels-MBP.fibertel.com.ar/Users/mmiglioranza/Documents/github/helsinky-moocs/devops/kubernetes/part1/1.07\[0m[27m[24m[J[01;32m➜  [36m1.07[00m [01;34mgit:([31mmain[34m) [33m✗[00m [K[?1h=[?2004hcurl localhost:8081/hash     [?1l>[?2004l
+]2;curl localhost:8081]1;curlok[1m[7m%[27m[1m[0m                                                                                                                                                      ]2;mmiglioranza@Manuels-MBP:~/Documents/github/helsinky-moocs/devops/kubernetes/part1/1.07]1;..es/part1/1.07]7;file://Manuels-MBP.fibertel.com.ar/Users/mmiglioranza/Documents/github/helsinky-moocs/devops/kubernetes/part1/1.07\[0m[27m[24m[J[01;32m➜  [36m1.07[00m [01;34mgit:([31mmain[34m) [33m✗[00m [K[?1h=[?2004heexit[?1l>[?2004l
+]2;exit]1;exit
+Script done on Fri Sep  6 14:15:43 2024

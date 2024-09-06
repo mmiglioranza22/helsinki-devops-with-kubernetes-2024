@@ -16,6 +16,15 @@ spec:
 # The service todo-app-svc will be exposed internally to cluster applications on port 1234
 # and externally to the cluster on the node IP adress on 30080 (check in any case for minikube specific case)
 # It will forward request to pods with the label "todo-app" on port 8080, that is, to the application running from the deployment.
+#
+# k3d:
+# https://k3d.io/v5.7.3/usage/exposing_services/?h=#2-via-nodeport
+# Since k3d runs inside docker (is a k3s wrapper), we need to create the cluster with ports opened to the host machine:
+#
+#   k3d cluster create mycluster -p "8082:30080@agent:0" --agents 2
+# This ensures we can kubectl apply -f the correct "host-port:agent-nodePort-in-service-yaml-file" to access the service from the host.
+# ======================
+# Minikube:
 # To access that app via the service, minikube requires to tunnel the service and leave the terminal open after running:
 #
 #   minikube service <service name> --url

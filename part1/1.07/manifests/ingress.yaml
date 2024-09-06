@@ -1,7 +1,7 @@
 apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
-  name: dwk-material-ingress
+  name: hashgenerator2-ingress
 spec:
   rules:
     - http:
@@ -10,6 +10,6 @@ spec:
             pathType: Prefix
             backend:
               service:
-                name: hashresponse2-svc
+                name: hashgenerator2-svc
                 port:
-                  number: 2345
+                  number: 2345 # points to the port assigned to the ClusterIp service (this is inside the cluster)

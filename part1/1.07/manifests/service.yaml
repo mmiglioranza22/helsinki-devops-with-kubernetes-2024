@@ -1,12 +1,12 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: hashresponse2-svc
+  name: hashgenerator2-svc
 spec:
   type: ClusterIP
   selector:
-    app: hashresponse2
+    app: hashgenerator2
   ports:
-    - port: 2345
+    - port: 2345 # self. Inner port available within the clusted
       protocol: TCP
-      targetPort: 3000
+      targetPort: 8080 # The app's port (defined 8080 in the source code)
