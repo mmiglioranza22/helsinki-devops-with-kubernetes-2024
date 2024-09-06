@@ -1,0 +1,62 @@
+Script started on Thu Sep  5 22:08:35 2024
+[1m[7m%[27m[1m[0m                                                                                                                                                     
+ 
+]2;mmiglioranza@Manuels-MBP:~/Documents/github/helsinky-moocs/devops/kubernetes/project/app-todo-list/server]1;..o-list/server]7;file://Manuels-MBP.fibertel.com.ar/Users/mmiglioranza/Documents/github/helsinky-moocs/devops/kubernetes/project/app-todo-list/server\
+[0m[27m[24m[J[01;32m➜  [36mserver[00m [K[?1h=[?2004h
+
+[0m[27m[24m[J[01;32m➜  [36mserver[00m [01;34mgit:([31mmain[34m) [33m✗[00m [Kscript ex1.06.txt[17Dkubectl delete services todo-app-svc[21Ddeployments.apps todo-app-dep[44Dminikube service[15P[10Csvc --url         [9D[35Dkubectl apply -f manifests/service.yaml[12Ddeployment.yaml[34Dget svc                           [27Dpodsdeploy[?1l>[?2004l
+
+]2;kubectl get deploy]1;kubectlNo resources found in default namespace.
+[1m[7m%[27m[1m[0m                                                                                                                                                     
+ 
+]2;mmiglioranza@Manuels-MBP:~/Documents/github/helsinky-moocs/devops/kubernetes/project/app-todo-list/server]1;..o-list/server]7;file://Manuels-MBP.fibertel.com.ar/Users/mmiglioranza/Documents/github/helsinky-moocs/devops/kubernetes/project/app-todo-list/server\
+[0m[27m[24m[J[01;32m➜  [36mserver[00m [01;34mgit:([31mmain[34m) [33m✗[00m [K[?1h=[?2004hkubectl get deploy[18Dscript ex1.06.txt [17Dkubectl delete services todo-app-svc[21Ddeployments.apps todo-app-dep[44Dminikube service[15P[10Csvc --url         [9D[35Dkubectl apply -f manifests/service.yaml[12Ddeployment.yaml[34Dget svc                           [27Dpodssvc [?1l>[?2004l
+
+]2;kubectl get svc]1;kubectlNAME         TYPE        CLUSTER-IP   EXTERNAL-IP   PORT(S)   AGE
+kubernetes   ClusterIP   10.96.0.1    <none>        443/TCP   10h
+[1m[7m%[27m[1m[0m                                                                                                                                                     
+ 
+]2;mmiglioranza@Manuels-MBP:~/Documents/github/helsinky-moocs/devops/kubernetes/project/app-todo-list/server]1;..o-list/server]7;file://Manuels-MBP.fibertel.com.ar/Users/mmiglioranza/Documents/github/helsinky-moocs/devops/kubernetes/project/app-todo-list/server\
+[0m[27m[24m[J[01;32m➜  [36mserver[00m [01;34mgit:([31mmain[34m) [33m✗[00m [K[?1h=[?2004hkubectl get svcdeploy[18Dscript ex1.06.txt [17Dkubectl delete services todo-app-svc[21Ddeployments.apps todo-app-dep[44Dminikube service[15P[10Csvc --url         [9D[35Dkubectl apply -f manifests/service.yaml[12Ddeployment.yaml[?1l>[?2004l
+
+]2;kubectl apply -f manifests/deployment.yaml]1;kubectldeployment.apps/todo-app-dep created
+[1m[7m%[27m[1m[0m                                                                                                                                                     
+ 
+]2;mmiglioranza@Manuels-MBP:~/Documents/github/helsinky-moocs/devops/kubernetes/project/app-todo-list/server]1;..o-list/server]7;file://Manuels-MBP.fibertel.com.ar/Users/mmiglioranza/Documents/github/helsinky-moocs/devops/kubernetes/project/app-todo-list/server\
+[0m[27m[24m[J[01;32m➜  [36mserver[00m [01;34mgit:([31mmain[34m) [33m✗[00m [K[?1h=[?2004hkubectl apply -f manifests/deployment.yaml[34Dget svc                           [27Ddeploy[18Dscript ex1.06.txt [17Dkubectl delete services todo-app-svc[21Ddeployments.apps todo-app-dep[44Dminikube service[15P[10Csvc --url         [9D[35Dkubectl apply -f manifests/service.yaml[12Ddeployment.yaml[15Dservice.yaml   [?1l>[?2004l
+
+]2;kubectl apply -f manifests/service.yaml]1;kubectlservice/todo-app-svc created
+[1m[7m%[27m[1m[0m                                                                                                                                                     
+ 
+]2;mmiglioranza@Manuels-MBP:~/Documents/github/helsinky-moocs/devops/kubernetes/project/app-todo-list/server]1;..o-list/server]7;file://Manuels-MBP.fibertel.com.ar/Users/mmiglioranza/Documents/github/helsinky-moocs/devops/kubernetes/project/app-todo-list/server\
+[0m[27m[24m[J[01;32m➜  [36mserver[00m [01;34mgit:([31mmain[34m) [33m✗[00m [K[?1h=[?2004hkubectl apply -f manifests/service.yaml[12Ddeployment.yaml[34Dget svc                           [27Ddeploy[?1l>[?2004l
+
+]2;kubectl get deploy]1;kubectlNAME           READY   UP-TO-DATE   AVAILABLE   AGE
+todo-app-dep   1/1     1            1           9s
+[1m[7m%[27m[1m[0m                                                                                                                                                     
+ 
+]2;mmiglioranza@Manuels-MBP:~/Documents/github/helsinky-moocs/devops/kubernetes/project/app-todo-list/server]1;..o-list/server]7;file://Manuels-MBP.fibertel.com.ar/Users/mmiglioranza/Documents/github/helsinky-moocs/devops/kubernetes/project/app-todo-list/server\
+[0m[27m[24m[J[01;32m➜  [36mserver[00m [01;34mgit:([31mmain[34m) [33m✗[00m [K[?1h=[?2004hkubectl get deploy[10Dapply -f manifests/service.yaml[12Ddeployment.yaml[34Dget svc                           [27D[?1l>[?2004l
+
+]2;kubectl get svc]1;kubectlNAME           TYPE        CLUSTER-IP      EXTERNAL-IP   PORT(S)          AGE
+kubernetes     ClusterIP   10.96.0.1       <none>        443/TCP          10h
+todo-app-svc   NodePort    10.109.150.93   <none>        1234:30080/TCP   7s
+[1m[7m%[27m[1m[0m                                                                                                                                                     
+ 
+]2;mmiglioranza@Manuels-MBP:~/Documents/github/helsinky-moocs/devops/kubernetes/project/app-todo-list/server]1;..o-list/server]7;file://Manuels-MBP.fibertel.com.ar/Users/mmiglioranza/Documents/github/helsinky-moocs/devops/kubernetes/project/app-todo-list/server\
+[0m[27m[24m[J[01;32m➜  [36mserver[00m [01;34mgit:([31mmain[34m) [33m✗[00m [K[?1h=[?2004hmminikube service todo-app-svc --url[?1l>[?2004l
+
+]2;minikube service todo-app-svc --url]1;minikubehttp://127.0.0.1:54061
+❗  Because you are using a Docker driver on darwin, the terminal needs to be open to run it.
+
+
+Minikube requires this because the way it runs on docker
+
+
+^C[1m[7m%[27m[1m[0m                                                                                                                                                     
+ 
+]2;mmiglioranza@Manuels-MBP:~/Documents/github/helsinky-moocs/devops/kubernetes/project/app-todo-list/server]1;..o-list/server]7;file://Manuels-MBP.fibertel.com.ar/Users/mmiglioranza/Documents/github/helsinky-moocs/devops/kubernetes/project/app-todo-list/server\
+[0m[27m[24m[J[01;32m➜  [36mserver[00m [01;34mgit:([31mmain[34m) [33m✗[00m [K[?1h=[?2004heexit[?1l>[?2004l
+
+]2;exit]1;exit
+Script done on Thu Sep  5 22:09:49 2024
