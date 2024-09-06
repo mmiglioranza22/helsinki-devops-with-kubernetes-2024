@@ -12,4 +12,19 @@ spec:
               service:
                 name: hashgenerator2-svc
                 port:
-                  number: 2345 # points to the port assigned to the ClusterIp service (this is inside the cluster)
+                  number: 5555 # points to the port assigned to the ClusterIp service (this is inside the cluster)
+
+# k3d:
+#
+# https://k3d.io/v5.7.3/usage/exposing_services/?h=#1-via-ingress-recommended
+# k3s deploys traefik as the default ingress controller (listens to port 80)
+# A cluster needs to be created (as always) with its loadbalancer exposed to the port we want to target from the host machine
+#
+#  k3d cluster create <optional-cluster-name> -p "8081:80@loadbalancer" --agents 2
+#
+# the port-mapping construct 8081:80@loadbalancer means:
+#   “map port 8081 from the host to port 80 on the container which matches the nodefilter loadbalancer“
+#     . the loadbalancer nodefilter matches only the serverlb that’s deployed in front of a cluster’s server nodes
+#       . all ports exposed on the serverlb will be proxied to the same ports on all server nodes in the cluster
+#
+# Related doubts: https://stackoverflow.com/questions/56243121/can-i-set-custom-ports-for-a-kubernetes-ingress-to-listen-on-besides-80-443

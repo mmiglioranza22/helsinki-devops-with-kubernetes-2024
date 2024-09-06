@@ -7,6 +7,6 @@ spec:
   selector:
     app: hashgenerator2
   ports:
-    - port: 2345 # self. Inner port available within the clusted
+    - port: 5555 # self. Inner port available within the clusted
       protocol: TCP
-      targetPort: 8080 # The app's port (defined 8080 in the source code)
+      targetPort: 8080 # The app's exposed port (defined 8080 in the source code)
