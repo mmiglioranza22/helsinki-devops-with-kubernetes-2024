@@ -1,0 +1,24 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: hashgenerator2-dep
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: hashgenerator2
+  template:
+    metadata:
+      labels:
+        app: hashgenerator2
+    spec:
+      containers:
+        - name: hashgenerator2
+          image: mmiglioranza22/k8s-ex.1.07
+          resources:
+            requests:
+              memory: "64Mi"
+              cpu: "250m"
+            limits:
+              memory: "128Mi"
+              cpu: "500m"

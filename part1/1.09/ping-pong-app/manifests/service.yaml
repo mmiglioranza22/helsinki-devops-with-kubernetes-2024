@@ -1,11 +1,11 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: hashgenerator2-svc
+  name: ping-pong-svc
 spec:
   type: ClusterIP
   selector:
-    app: hashgenerator2
+    app: ping-pong
   ports:
     - port: 5555 # self. Inner port available within the cluster
       protocol: TCP

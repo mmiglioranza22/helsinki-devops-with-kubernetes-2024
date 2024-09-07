@@ -47,6 +47,6 @@ spec:
   selector:
     app: todo-app
   ports:
-    - port: 1234 # self. Inner port available within the clusted
+    - port: 1234 # self. Inner port available within the cluster
       protocol: TCP
       targetPort: 8080 # The app's exposed port (defined 8080 in the source code)
