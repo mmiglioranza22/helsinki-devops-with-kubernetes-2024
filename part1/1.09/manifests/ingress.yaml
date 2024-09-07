@@ -21,6 +21,8 @@ spec:
                 port:
                   number: 5555 # points to the port assigned to the pingpong ClusterIp service (this is inside the cluster)
 
+# Fanout config - https://kubernetes.io/docs/concepts/services-networking/ingress/#simple-fanout
+
 # Pods can have the same port in different services.
 # Each Pod/Service has its own IP address, you can have as many Pods/Services as you want all listening to the same port
 # as long as they are on different namespaces? (paths?) - check this
