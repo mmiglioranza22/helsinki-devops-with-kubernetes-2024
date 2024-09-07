@@ -1,0 +1,49 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: read-write-app-dep
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: read-write-app
+  template:
+    metadata:
+      labels:
+        app: read-write-app
+    spec:
+      volumes:
+        - name: shared-logs
+          emptyDir: {}
+      containers:
+        - name: read-log-service
+          image: mmiglioranza22/k8s-ex.1.10-read-log-service
+          resources:
+            requests:
+              memory: "64Mi"
+              cpu: "250m"
+            limits:
+              memory: "128Mi"
+              cpu: "500m"
+          volumeMounts:
+            - name: shared-logs
+              mountPath: /usr/src/app/files
+        - name: write-log-service
+          image: mmiglioranza22/k8s-ex.1.10-write-log-service
+          resources:
+            requests:
+              memory: "64Mi"
+              cpu: "250m"
+            limits:
+              memory: "128Mi"
+              cpu: "500m"
+          volumeMounts:
+            - name: shared-logs
+              mountPath: /usr/src/app/files
+#
+# App: read-write-app
+# Service 1 (write): write-log-service
+# Service 2 (read): read-log-service
+# An app can contain containers that perform different tasks (read, write, etc).
+# The important port to expose/target is the read app (the one that can be accesed via GET)
+

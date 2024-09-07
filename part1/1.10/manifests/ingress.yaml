@@ -1,0 +1,15 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: read-write-app-ingress
+spec:
+  rules:
+    - http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: read-write-app-svc
+                port:
+                  number: 5151 # points to the port assigned to the read-write-app ClusterIp service (this is inside the cluster)
