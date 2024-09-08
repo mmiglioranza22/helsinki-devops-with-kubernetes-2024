@@ -17,7 +17,7 @@ spec:
           persistentVolumeClaim:
             claimName: shared-logs-vol-claim
       containers:
-        - name: ping-pong-service # ping pong
+        - name: ping-pong-service # ping pong write only
           image: mmiglioranza22/k8s-ex.1.11-ping-pong-service
           resources:
             requests:
