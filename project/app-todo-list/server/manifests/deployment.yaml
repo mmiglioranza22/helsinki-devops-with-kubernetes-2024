@@ -15,6 +15,9 @@ spec:
       containers:
         - name: todo-app
           image: mmiglioranza22/project-todo-app
+          volumeMounts:
+            - name: image-vol
+              mountPath: /usr/src/app/files
           env:
             - name: ENV_VAR
               value: "This is the ENV_VAR value: Hello!"
@@ -26,3 +29,7 @@ spec:
             limits:
               memory: "128Mi"
               cpu: "500m"
+      volumes:
+        - name: image-vol
+          persistentVolumeClaim:
+            claimName: image-vol-pvc

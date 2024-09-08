@@ -42,7 +42,7 @@ app.use(morgan("dev"));
 
 app.get("/", async (req, res) => {
   try {
-    // await findAFile();
+    await findAFile();
   } catch (error) {
     console.log("FAILED TO READ FILE", "----------------", error);
   } finally {
