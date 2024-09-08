@@ -1,0 +1,50 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: persistent-ping-log-app-dep
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: persistent-ping-log-app
+  template:
+    metadata:
+      labels:
+        app: persistent-ping-log-app
+    spec:
+      volumes:
+        - name: shared-logs-vol
+          persistentVolumeClaim:
+            claimName: shared-logs-vol-claim
+      containers:
+        - name: ping-pong-service # ping pong
+          image: mmiglioranza22/k8s-ex.1.11-ping-pong-service
+          resources:
+            requests:
+              memory: "64Mi"
+              cpu: "250m"
+            limits:
+              memory: "128Mi"
+              cpu: "500m"
+          volumeMounts:
+            - name: shared-logs-vol
+              mountPath: /usr/src/app/files
+        - name: logger-service # logger writes/reads and GETS
+          image: mmiglioranza22/k8s-ex.1.10-logger-service
+          resources:
+            requests:
+              memory: "64Mi"
+              cpu: "250m"
+            limits:
+              memory: "128Mi"
+              cpu: "500m"
+          volumeMounts:
+            - name: shared-logs-vol
+              mountPath: /usr/src/app/files
+#
+# App: persistent-ping-log-app
+# Service 1 (write): write-log-service
+# Service 2 (read): read-log-service
+# An app can contain containers that perform different tasks (read, write, etc).
+# The important port to expose/target is the read app (the one that can be accesed via GET)
+
