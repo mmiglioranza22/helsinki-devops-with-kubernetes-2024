@@ -27,10 +27,3 @@ spec:
         - name: shared-logs
           persistentVolumeClaim:
             claimName: shared-logs-claim
-#
-# App: persistent-ping-log-app
-# Service 1 (write): write-log-service
-# Service 2 (read): read-log-service
-# An app can contain containers that perform different tasks (read, write, etc).
-# The important port to expose/target is the read app (the one that can be accesed via GET)
-
