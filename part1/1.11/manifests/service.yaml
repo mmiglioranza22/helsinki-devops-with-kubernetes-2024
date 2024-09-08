@@ -8,10 +8,10 @@ spec:
     app: persistent-ping-log-app
   ports:
     - name: ping-pong
-      port: 5151 # self. Inner port available within the cluster
+      port: 5151
       protocol: TCP
-      targetPort: 3000 # The app's exposed port (defined 3000 in the source code) -> read-log-service
+      targetPort: 3000 # The app's exposed port (defined 3000 in the source code)
     - name: logger
-      port: 5152 # self. Inner port available within the cluster
+      port: 5152
       protocol: TCP
-      targetPort: 3001 # The app's exposed port (defined 3000 in the source code) -> read-log-service
+      targetPort: 3001 # The app's exposed port (defined 3001 in the source code)

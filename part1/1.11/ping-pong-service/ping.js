@@ -19,7 +19,7 @@ const ping = async () => {
   // on start up, the following if block will be checked only once
   if ((await previousPingsFileExists()) && !checkedPingFileOnce) {
     checkedPingFileOnce = true; // do not check ping file as it was done already the first time
-    counter = await fs.promises.readFile(
+    counterString = await fs.promises.readFile(
       pingsFilePath,
       "utf-8",
       (err, buffer) => {

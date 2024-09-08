@@ -6,6 +6,13 @@ spec:
   rules:
     - http:
         paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: persistent-ping-log-app-svc
+                port:
+                  number: 5152 # points to the port assigned to the read-write-app ClusterIp service (this is inside the cluster)
           - path: /pingpong
             pathType: Prefix
             backend:
@@ -13,10 +20,3 @@ spec:
                 name: persistent-ping-log-app-svc
                 port:
                   number: 5151 # points to the port assigned to the read-write-app ClusterIp service (this is inside the cluster)
-          - path: /hash
-            pathType: Prefix
-            backend:
-              service:
-                name: persistent-ping-log-app-svc
-                port:
-                  number: 5152 # points to the port assigned to the read-write-app ClusterIp service (this is inside the cluster)
