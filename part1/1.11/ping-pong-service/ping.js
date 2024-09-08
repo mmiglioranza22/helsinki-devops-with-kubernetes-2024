@@ -22,7 +22,7 @@ const ping = async () => {
     counter = await fs.promises.readFile(
       pingsFilePath,
       "utf-8",
-      (err, string) => {
+      (err, buffer) => {
         if (err) {
           return console.log(
             "FAILED TO READ PING FILE",
@@ -30,7 +30,7 @@ const ping = async () => {
             err
           );
         }
-        return string;
+        return buffer;
       }
     );
     counter = Number(counterString); // sets counter last registered value
@@ -39,7 +39,7 @@ const ping = async () => {
   counter++;
 
   // file is overwritten each time to keep track of last pingpong request
-  await fs.promises.writeFile(pingsFilePath, counter, (err) => {
+  await fs.promises.writeFile(pingsFilePath, String(counter), (err) => {
     if (err) throw err;
     console.log("The file has been saved!");
   });

@@ -1,12 +1,17 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: read-write-app-svc
+  name: persistent-ping-log-app-svc
 spec:
   type: ClusterIP
   selector:
-    app: read-write-app
+    app: persistent-ping-log-app
   ports:
-    - port: 5151 # self. Inner port available within the cluster
+    - name: ping-pong
+      port: 5151 # self. Inner port available within the cluster
       protocol: TCP
       targetPort: 3000 # The app's exposed port (defined 3000 in the source code) -> read-log-service
+    - name: logger
+      port: 5152 # self. Inner port available within the cluster
+      protocol: TCP
+      targetPort: 3001 # The app's exposed port (defined 3000 in the source code) -> read-log-service

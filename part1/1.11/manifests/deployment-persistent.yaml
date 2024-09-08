@@ -12,35 +12,21 @@ spec:
       labels:
         app: persistent-ping-log-app
     spec:
-      volumes:
-        - name: shared-logs-vol
-          persistentVolumeClaim:
-            claimName: shared-logs-vol-claim
       containers:
         - name: ping-pong-service # ping pong write only
           image: mmiglioranza22/k8s-ex.1.11-ping-pong-service
-          resources:
-            requests:
-              memory: "64Mi"
-              cpu: "250m"
-            limits:
-              memory: "128Mi"
-              cpu: "500m"
           volumeMounts:
-            - name: shared-logs-vol
+            - name: shared-logs
               mountPath: /usr/src/app/files
         - name: logger-service # logger writes/reads and GETS
-          image: mmiglioranza22/k8s-ex.1.10-logger-service
-          resources:
-            requests:
-              memory: "64Mi"
-              cpu: "250m"
-            limits:
-              memory: "128Mi"
-              cpu: "500m"
+          image: mmiglioranza22/k8s-ex.1.11-logger-service
           volumeMounts:
-            - name: shared-logs-vol
+            - name: shared-logs
               mountPath: /usr/src/app/files
+      volumes:
+        - name: shared-logs
+          persistentVolumeClaim:
+            claimName: shared-logs-claim
 #
 # App: persistent-ping-log-app
 # Service 1 (write): write-log-service

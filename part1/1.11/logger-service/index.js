@@ -1,6 +1,8 @@
 const path = require("path");
 const fs = require("fs");
 const express = require("express");
+const cors = require("cors");
+const morgan = require("morgan");
 const { randomHash } = require("./hashTimestamp");
 
 const directory = path.join("/", "usr", "src", "app", "files");
@@ -18,14 +20,14 @@ app.get("/hash", async (req, res) => {
   const previousPings = await fs.promises.readFile(
     pingsFilePath,
     "utf-8",
-    (err, string) => {
+    (err, buffer) => {
       if (err) {
         return console.log("FAILED TO READ PING FILE", "----------------", err);
       }
-      return string ?? 0;
+      return buffer;
     }
   );
-  const response = randomHash + "\n" + "Ping / Pongs: " + previousPings;
+  const response = randomHash + "\n" + "Ping / Pongs: " + (previousPings ?? 0);
 
   res.status(200).json(response);
 });

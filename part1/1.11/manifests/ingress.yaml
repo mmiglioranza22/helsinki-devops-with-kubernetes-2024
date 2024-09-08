@@ -1,15 +1,22 @@
 apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
-  name: read-write-app-ingress
+  name: persistent-ping-log-app-ingress
 spec:
   rules:
     - http:
         paths:
-          - path: /
+          - path: /pingpong
             pathType: Prefix
             backend:
               service:
-                name: read-write-app-svc
+                name: persistent-ping-log-app-svc
                 port:
                   number: 5151 # points to the port assigned to the read-write-app ClusterIp service (this is inside the cluster)
+          - path: /hash
+            pathType: Prefix
+            backend:
+              service:
+                name: persistent-ping-log-app-svc
+                port:
+                  number: 5152 # points to the port assigned to the read-write-app ClusterIp service (this is inside the cluster)

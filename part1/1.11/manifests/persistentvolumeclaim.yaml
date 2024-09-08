@@ -1,9 +1,9 @@
 apiVersion: v1
 kind: PersistentVolumeClaim
 metadata:
-  name: shared-logs-vol-claim
+  name: shared-logs-claim
 spec:
-  storageClassName: manual
+  storageClassName: my-shared-logs-pv
   accessModes:
     - ReadWriteOnce
   resources:
