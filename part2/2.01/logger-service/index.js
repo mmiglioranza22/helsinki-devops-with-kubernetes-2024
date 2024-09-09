@@ -1,7 +1,7 @@
 const express = require("express");
 const cors = require("cors");
 const morgan = require("morgan");
-const { getHashNow } = require("./hashTimestamp");
+const { randomHash } = require("./hashTimestamp");
 const axios = require("axios");
 
 const app = express();
@@ -13,20 +13,15 @@ app.use(express.json());
 app.use(morgan("dev"));
 
 app.get("/", async (req, res) => {
+  console.log("/ only");
   let pingResponse;
   try {
     pingResponse = await axios.get("http://network-ping-log-app-svc:5151");
-    // const pingResponse = await axios.get("http://ping-pong:5151");
-    // const pingResponse = await axios.get(
-    //   "http://network-ping-log-app-svc:5151/hash"
-    // );
-    // const pingResponse = await axios.get("http://ping-pong:5151/hash");
 
     const previousPings = pingResponse.data ?? 0;
-    const hash = getHashNow();
-    const response = hash + "\n" + "Ping / Pongs: " + previousPings;
+    const response = randomHash + "\n" + "Ping / Pongs: " + previousPings;
 
-    res.status(200).json(response);
+    res.status(200).json({ response });
   } catch (err) {
     console.log({ err, pingResponse });
     res.send("error");

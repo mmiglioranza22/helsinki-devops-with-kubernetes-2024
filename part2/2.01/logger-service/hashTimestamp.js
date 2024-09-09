@@ -5,5 +5,6 @@ const getHashNow = () => {
   randomHash = `${new Date().toISOString()}: ${uuidv4()}`;
   setTimeout(getHashNow, 5000);
 };
+getHashNow();
 
-module.exports = { getHashNow };
+module.exports = { randomHash };

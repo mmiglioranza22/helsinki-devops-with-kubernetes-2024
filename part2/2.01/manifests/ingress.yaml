@@ -6,13 +6,6 @@ spec:
   rules:
     - http:
         paths:
-          - path: /hash
-            pathType: Prefix
-            backend:
-              service:
-                name: network-ping-log-app-svc
-                port:
-                  number: 5152 # points to the port assigned to the read-write-app ClusterIp service (this is inside the cluster)
           - path: /pingpong
             pathType: Prefix
             backend:
@@ -20,6 +13,13 @@ spec:
                 name: network-ping-log-app-svc
                 port:
                   number: 5151 # points to the port assigned to the read-write-app ClusterIp service (this is inside the cluster)
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: network-ping-log-app-svc
+                port:
+                  number: 5152 # points to the port assigned to the read-write-app ClusterIp service (this is inside the cluster)
 
 # A note on ports for same pod containers
 # This can be done as long as the same service points to different ports, each mapped to the respective targetPort (the one decided for the app PORT env var)
