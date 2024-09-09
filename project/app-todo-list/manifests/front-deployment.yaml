@@ -1,0 +1,24 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: todo-app-frontend-dep
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: todo-app-frontend
+  template:
+    metadata:
+      labels:
+        app: todo-app-frontend
+    spec:
+      containers:
+        - name: todo-app-frontend
+          image: mmiglioranza22/project-todo-app
+          resources:
+            requests:
+              memory: "64Mi"
+              cpu: "250m"
+            limits:
+              memory: "128Mi"
+              cpu: "500m"
