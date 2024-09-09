@@ -12,6 +12,10 @@ app.use(cors());
 app.use(express.json());
 app.use(morgan("dev"));
 
+app.get("/check", async (req, res) => {
+  res.send("check logger");
+});
+
 app.get("/", async (req, res) => {
   console.log("/ only");
   let pingResponse;
@@ -26,10 +30,6 @@ app.get("/", async (req, res) => {
     console.log({ err, pingResponse });
     res.send("error");
   }
-});
-
-app.get("/check", async (req, res) => {
-  res.send("check logger");
 });
 
 app.listen(PORT, () => {

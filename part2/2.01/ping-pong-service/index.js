@@ -16,16 +16,17 @@ app.use(cors());
 app.use(express.json());
 app.use(morgan("dev"));
 
-app.get("/", (req, res) => {
-  res.send(String(counter));
-});
-
 app.get("/pingpong", (req, res) => {
   ping();
   res.send("pong");
 });
+
 app.get("/check", async (req, res) => {
   res.send("check ping");
+});
+
+app.get("/", (req, res) => {
+  res.send(String(counter));
 });
 
 app.listen(PORT, () => {
