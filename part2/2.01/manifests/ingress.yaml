@@ -24,3 +24,6 @@ spec:
 # A note on ports for same pod containers:
 
 # Note: check apps router precedence from more to less specific, same thing with ingress paths
+# If more than one pod/container has a "/" default path, all of them will be targeted and response will belong to the last? (check this)
+# Depending on the required solution, using different services for each application will be easier to avoid conflicts
+# ideally a app-name prefix could be added to all routers in source code ?
