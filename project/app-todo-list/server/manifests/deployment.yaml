@@ -17,7 +17,7 @@ spec:
           image: mmiglioranza22/project-todo-app
           volumeMounts:
             - name: image-vol
-              mountPath: /usr/src/app/files
+              mountPath: /usr/src/app/build
           env:
             - name: ENV_VAR
               value: "This is the ENV_VAR value: Hello!"

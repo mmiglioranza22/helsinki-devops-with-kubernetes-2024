@@ -49,4 +49,4 @@ spec:
   ports:
     - port: 1234 # self. Inner port available within the cluster
       protocol: TCP
-      targetPort: 8080 # The app's exposed port (defined 8080 in the source code)
+      targetPort: 5000 # The app's exposed port (defined 8080 in the source code)

@@ -6,20 +6,10 @@
     <title>Document</title>
   </head>
   <body>
-    <!-- <img
-      id="image"
-      src="https://fastly.picsum.photos/id/857/200/300.jpg?hmac=kFf6koUaHH4bIVWuoXIIsmZJQM_9Ew5l4AOeLL2UoG8"
-      alt="lorem picsum"
-    /> -->
+    <p>This first image exists on the build dir of source code</p>
     <img id="image" src="gto.png" alt="lorem picsum" width="200" />
-
-    <h3>img src set to "/usr/src/app/files/image.jpg"</h3>
-    <img id="image" src="/usr/src/app/files/image.jpg" alt="lorem picsum" />
-    <h3>img src set to "/image.jpg"</h3>
-    <img id="image" src="/image.jpg" alt="lorem picsum" />
-    <h3>img src set to "image.jpg"</h3>
+    <p>This second image is added to that build dir later when its fetched</p>
     <img id="image" src="image.jpg" alt="lorem picsum" />
-
     <form action="submit">
       <input type="text" />
       <button type="submit">Create TODO</button>
