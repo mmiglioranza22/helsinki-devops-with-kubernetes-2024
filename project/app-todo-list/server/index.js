@@ -4,12 +4,14 @@ const express = require("express");
 const cors = require("cors");
 const morgan = require("morgan");
 const axios = require("axios");
+const moment = require("moment/moment");
 
 const PORT = process.env.PORT || 5000;
 
 // get the file or image
 const directory = path.join("/", "usr", "src", "app", "build");
 const filePath = path.join(directory, "image.jpg");
+const fileSavedLogPath = path.join(directory, "log.txt");
 
 const fileAlreadyExists = async () =>
   new Promise((res) => {
@@ -19,6 +21,9 @@ const fileAlreadyExists = async () =>
     });
   });
 
+const removeFile = async () =>
+  new Promise((res) => fs.unlink(filePath, (err) => res()));
+
 const writableStream = fs.createWriteStream(filePath);
 
 writableStream.on("error", (error) => {
@@ -27,20 +32,68 @@ writableStream.on("error", (error) => {
   );
 });
 
-const findAFile = async () => {
-  if (await fileAlreadyExists()) return;
-  console.log("Fetching image...");
-
-  await new Promise((res) => fs.mkdir(directory, (err) => res()));
+const fetchImageAndSaveLog = async () => {
   const response = await axios.get("https://picsum.photos/200", {
     responseType: "stream",
   });
-  console.log("Image fetched!");
+  // Save log (file gets overwitten each time)
+  const now = moment().toString();
+  await fs.promises.writeFile(fileSavedLogPath, now, (err) => {
+    if (err) throw err;
+    console.log("The file has been saved!");
+  });
+  console.log(`Image fetched at ${now}`);
+  // Save image
   response.data.pipe(writableStream);
 };
 
-const removeFile = async () =>
-  new Promise((res) => fs.unlink(filePath, (err) => res()));
+const findAFile = async () => {
+  if (await fileAlreadyExists()) {
+    console.log("Existing image file. Checking last image fetch...");
+    const imageAge = await fs.promises.readFile(
+      fileSavedLogPath,
+      "utf-8",
+      (err, buffer) => {
+        if (err) {
+          return console.log(
+            "FAILED TO READ LOG FILE",
+            "----------------",
+            err
+          );
+        }
+        return buffer;
+      }
+    );
+    const diff = moment().diff(moment(imageAge), "minutes");
+    console.log({ diff });
+    if (diff > 5) {
+      // we remove the file each time to avoid any permissions issues from flags passed to writableStream: https://stackoverflow.com/questions/11995536/node-js-overwriting-a-file
+      await removeFile();
+      console.log("Old image. Fetching new image...");
+      await fetchImageAndSaveLog();
+    } else {
+      console.log("Using old image");
+      return;
+    }
+  } else {
+    console.log("No image. Fetching new image for first time...");
+    await fetchImageAndSaveLog();
+  }
+
+  // await new Promise((res) => fs.mkdir(directory, (err) => res()));
+  // const response = await axios.get("https://picsum.photos/200", {
+  //   responseType: "stream",
+  // });
+
+  // const now = moment().toString();
+  // await fs.promises.writeFile(fileSavedLogPath, now, (err) => {
+  //   if (err) throw err;
+  //   console.log("The file has been saved!");
+  // });
+  // console.log(`Image fetched at ${now}`);
+  // response.data.pipe(writableStream);
+};
+
 // fetch/save image
 const app = express();
 
@@ -50,7 +103,15 @@ app.use(express.json());
 app.use(morgan("dev"));
 
 findAFile();
-app.get("/ping", (req, res) => res.send("pong"));
+app.get("/ping", async (req, res) => {
+  const lastSavedFileLog = await fs.promises.readFile(fileSavedLogPath);
+  res.send("pong: " + lastSavedFileLog);
+});
+
+app.get("/manual", async (req, res) => {
+  await fetchImageAndSaveLog();
+  res.send("ok");
+});
 
 app.listen(PORT, () => {
   console.log(`Server listening to port: ${PORT}`);

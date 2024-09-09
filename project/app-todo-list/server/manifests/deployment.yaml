@@ -18,9 +18,6 @@ spec:
           volumeMounts:
             - name: image-vol
               mountPath: /usr/src/app/build
-          env:
-            - name: ENV_VAR
-              value: "This is the ENV_VAR value: Hello!"
           # https://kubernetes.io/docs/concepts/configuration/manage-resources-containers/
           resources:
             requests:

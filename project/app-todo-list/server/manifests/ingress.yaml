@@ -12,8 +12,7 @@ spec:
               service:
                 name: todo-app-svc
                 port:
-                  number: 1234 # points to the port assigned to the ClusterIp service (this is inside the cluster)
-
+                  number: 1234
 # k3d:
 # Remember to expose the loadbalancer filter match (ingress controller traefik in k3d) when creating the cluster
 #   k3d cluster create <optional-cluster-name> -p "8081:80@loadbalancer" --agents 2
