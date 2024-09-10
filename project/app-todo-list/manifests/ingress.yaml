@@ -6,7 +6,7 @@ spec:
   rules:
     - http:
         paths:
-          - path: /todos
+          - path: /api/todos
             pathType: Prefix
             backend:
               service:

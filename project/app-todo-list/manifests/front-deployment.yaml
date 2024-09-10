@@ -15,6 +15,10 @@ spec:
       containers:
         - name: todo-app-frontend
           image: mmiglioranza22/project-todo-app-frontend
+          # env:
+          #   - name: VITE_BACKEND_URL
+          #     value: http://todo-app-backend-svc:1234 does not work,
+          #            but http://localhost:8081 because is hardcoded and is used with k3d cluster create
           resources:
             requests:
               memory: "64Mi"

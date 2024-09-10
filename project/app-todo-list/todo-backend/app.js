@@ -10,7 +10,7 @@ app.use(cors());
 app.use(express.json());
 app.use(logger("dev"));
 
-app.use("/todos", todosRouter);
+app.use("/api/todos", todosRouter);
 
 app.listen(PORT, () => {
   console.log(`Server listening to port: ${PORT}`);

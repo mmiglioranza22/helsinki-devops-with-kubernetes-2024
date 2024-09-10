@@ -7,6 +7,6 @@ spec:
   selector:
     app: todo-app-backend
   ports:
-    - port: 1234 # self. Inner port available within the cluster
+    - port: 1234
       protocol: TCP
-      targetPort: 5000 # The app's exposed port (defined 8080 in the source code)
+      targetPort: 5555 # todo-backend port
