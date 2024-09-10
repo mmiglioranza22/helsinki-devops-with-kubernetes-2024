@@ -1,0 +1,58 @@
+Script started on Fri Sep  6 13:43:49 2024
+/Users/mmiglioranza/.zshrc:source:122: no such file or directory: /Users/mmiglioranza/.aliases/alias-kubectl/kubectl-aliases
+[1m[7m%[27m[1m[0m                                                                                                                                                      ]2;mmiglioranza@Manuels-MBP:~/Documents/github/helsinky-moocs/devops/kubernetes/project/app-todo-list/server]1;..o-list/server]7;file://Manuels-MBP.fibertel.com.ar/Users/mmiglioranza/Documents/github/helsinky-moocs/devops/kubernetes/project/app-todo-list/server\[0m[27m[24m[J[01;31m➜  [36mserver[00m [K[?1h=[?2004h[0m[27m[24m[J[01;31m➜  [36mserver[00m [01;34mgit:([31mmain[34m) [33m✗[00m [K[7mk3d cluster create mycluster -p "8082:30080@agent:0" --agents 2[27m[63D[27mk[27m3[27md[27m [27mc[27ml[27mu[27ms[27mt[27me[27mr[27m [27mc[27mr[27me[27ma[27mt[27me[27m [27mm[27my[27mc[27ml[27mu[27ms[27mt[27me[27mr[27m [27m-[27mp[27m [27m"[27m8[27m0[27m8[27m2[27m:[27m3[27m0[27m0[27m8[27m0[27m@[27ma[27mg[27me[27mn[27mt[27m:[27m0[27m"[27m [27m-[27m-[27ma[27mg[27me[27mn[27mt[27ms[27m [27m2[P[35C [36D[P[35C [36D[P[35C [36D[P[35C [36D[P[35C [36D[P[35C [36D[P[35C [36D[P[35C [36D[P[35C [36D[P[34C [36D[?1l>[?2004l
+]2;k3d cluster create -p "8082:30080@agent:0" --agents 2]1;k3d[36mINFO[0m[0000] Prep: Network                                
+[36mINFO[0m[0000] Created network 'k3d-k3s-default'            
+[36mINFO[0m[0000] Created image volume k3d-k3s-default-images  
+[36mINFO[0m[0000] Starting new tools node...                   
+[36mINFO[0m[0000] Starting node 'k3d-k3s-default-tools'        
+[36mINFO[0m[0001] Creating node 'k3d-k3s-default-server-0'     
+[36mINFO[0m[0001] Creating node 'k3d-k3s-default-agent-0'      
+[36mINFO[0m[0001] Creating node 'k3d-k3s-default-agent-1'      
+[36mINFO[0m[0001] Creating LoadBalancer 'k3d-k3s-default-serverlb' 
+[36mINFO[0m[0001] Using the k3d-tools node to gather environment information 
+[36mINFO[0m[0001] Starting new tools node...                   
+[36mINFO[0m[0001] Starting node 'k3d-k3s-default-tools'        
+[36mINFO[0m[0001] Starting cluster 'k3s-default'               
+[36mINFO[0m[0001] Starting servers...                          
+[36mINFO[0m[0001] Starting node 'k3d-k3s-default-server-0'     
+[36mINFO[0m[0005] Starting agents...                           
+[36mINFO[0m[0005] Starting node 'k3d-k3s-default-agent-0'      
+[36mINFO[0m[0005] Starting node 'k3d-k3s-default-agent-1'      
+[36mINFO[0m[0015] Starting helpers...                          
+[36mINFO[0m[0015] Starting node 'k3d-k3s-default-serverlb'     
+[36mINFO[0m[0021] Injecting records for hostAliases (incl. host.k3d.internal) and for 5 network members into CoreDNS configmap... 
+[36mINFO[0m[0023] Cluster 'k3s-default' created successfully!  
+[36mINFO[0m[0023] You can now use it like this:                
+kubectl cluster-info
+[1m[7m%[27m[1m[0m                                                                                                                                                      ]2;mmiglioranza@Manuels-MBP:~/Documents/github/helsinky-moocs/devops/kubernetes/project/app-todo-list/server]1;..o-list/server]7;file://Manuels-MBP.fibertel.com.ar/Users/mmiglioranza/Documents/github/helsinky-moocs/devops/kubernetes/project/app-todo-list/server\[0m[27m[24m[J[01;32m➜  [36mserver[00m [01;34mgit:([31mmain[34m) [33m✗[00m [K[?1h=[?2004hk3d cluster create -p "8082:30080@agent:0" --agents 2[53Dscript service-with-k3s.txt                          [26D[27Dk3d cluster delete mycluster [29Dcurl localhost:8082         [9D102[19Dkubectl apply -f manifests/[19Dget deploy,pods,svc[?1l>[?2004l
+]2;kubectl get deploy,pods,svc]1;kubectlNAME                 TYPE        CLUSTER-IP   EXTERNAL-IP   PORT(S)   AGE
+service/kubernetes   ClusterIP   10.43.0.1    <none>        443/TCP   26s
+[1m[7m%[27m[1m[0m                                                                                                                                                      ]2;mmiglioranza@Manuels-MBP:~/Documents/github/helsinky-moocs/devops/kubernetes/project/app-todo-list/server]1;..o-list/server]7;file://Manuels-MBP.fibertel.com.ar/Users/mmiglioranza/Documents/github/helsinky-moocs/devops/kubernetes/project/app-todo-list/server\[0m[27m[24m[J[01;32m➜  [36mserver[00m [01;34mgit:([31mmain[34m) [33m✗[00m [K[?1h=[?2004hkubectl get deploy,pods,svc[27Dk3d cluster create -p "8082:30080@agent:0" --agents 2[53Dscript service-with-k3s.txt                          [26D[27Dk3d cluster delete mycluster [29Dcurl localhost:8082         [9D102[19Dkubectl apply -f manifests/[19Dget deploy,pods,svc[27Dk3d cluster create mycluster -p "8082:30080@agent:0" --agents 2[63Dkubectl get deploy,pods,svc                                    [36D[19Dapply -f manifests/[27Dcurl localhost:8082        [8D[19Dkubectl apply -f manifests/[?1l>[?2004l
+]2;kubectl apply -f manifests/]1;kubectldeployment.apps/todo-app-dep created
+service/todo-app-svc created
+[1m[7m%[27m[1m[0m                                                                                                                                                      ]2;mmiglioranza@Manuels-MBP:~/Documents/github/helsinky-moocs/devops/kubernetes/project/app-todo-list/server]1;..o-list/server]7;file://Manuels-MBP.fibertel.com.ar/Users/mmiglioranza/Documents/github/helsinky-moocs/devops/kubernetes/project/app-todo-list/server\[0m[27m[24m[J[01;32m➜  [36mserver[00m [01;34mgit:([31mmain[34m) [33m✗[00m [K[?1h=[?2004hkubectl apply -f manifests/[19Dget deploy,pods,svc[27Dk3d cluster create -p "8082:30080@agent:0" --agents 2[53Dkubectl get deploy,pods,svc                          [26D[?1l>[?2004l
+]2;kubectl get deploy,pods,svc]1;kubectlNAME                           READY   UP-TO-DATE   AVAILABLE   AGE
+deployment.apps/todo-app-dep   1/1     1            1           13s
+
+NAME                                READY   STATUS    RESTARTS   AGE
+pod/todo-app-dep-55d6768d4c-77v8x   1/1     Running   0          13s
+
+NAME                   TYPE        CLUSTER-IP     EXTERNAL-IP   PORT(S)          AGE
+service/kubernetes     ClusterIP   10.43.0.1      <none>        443/TCP          48s
+service/todo-app-svc   NodePort    10.43.173.38   <none>        1234:30080/TCP   13s
+[1m[7m%[27m[1m[0m                                                                                                                                                      ]2;mmiglioranza@Manuels-MBP:~/Documents/github/helsinky-moocs/devops/kubernetes/project/app-todo-list/server]1;..o-list/server]7;file://Manuels-MBP.fibertel.com.ar/Users/mmiglioranza/Documents/github/helsinky-moocs/devops/kubernetes/project/app-todo-list/server\[0m[27m[24m[J[01;32m➜  [36mserver[00m [01;34mgit:([31mmain[34m) [33m✗[00m [K[?1h=[?2004hccurl localhost:8082[?1l>[?2004l
+]2;curl localhost:8082]1;curl<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <h1>Hello from kubernetes cluster app!</h1>
+  </body>
+</html>
+[1m[7m%[27m[1m[0m                                                                                                                                                      ]2;mmiglioranza@Manuels-MBP:~/Documents/github/helsinky-moocs/devops/kubernetes/project/app-todo-list/server]1;..o-list/server]7;file://Manuels-MBP.fibertel.com.ar/Users/mmiglioranza/Documents/github/helsinky-moocs/devops/kubernetes/project/app-todo-list/server\[0m[27m[24m[J[01;32m➜  [36mserver[00m [01;34mgit:([31mmain[34m) [33m✗[00m [K[?1h=[?2004heexit[?1l>[?2004l
+]2;exit]1;exit
+Script done on Fri Sep  6 13:45:00 2024

@@ -1,0 +1,51 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: todo-app-ingress
+spec:
+  rules:
+    - http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: todo-app-svc
+                port:
+                  number: 1234
+# k3d:
+# Remember to expose the loadbalancer filter match (ingress controller traefik in k3d) when creating the cluster
+#   k3d cluster create <optional-cluster-name> -p "8081:80@loadbalancer" --agents 2
+
+# apiVersion: networking.k8s.io/v1
+# kind: Ingress
+# metadata:
+#   name: todo-app-nginx-ingress
+#   annotations:
+#     kubernetes.io/ingress.class: "nginx"
+#     nginx.ingress.kubernetes.io/add-base-url: "true"
+#     nginx.ingress.kubernetes.io/rewrite-target: /
+# spec:
+#   rules:
+#     - host: todo-app-svc.foo.org
+#       http:
+#         paths:
+#           - path: /
+#             pathType: Prefix
+#             backend:
+#               service:
+#                 name: todo-app-svc
+#                 port:
+#                   number: 1234
+# ingressClassName: nginx
+#
+# A note on ingress nginx to serve static files
+# - You need to configure the cluster first with localhost pointing to port 80, so the ingress controller gets the traffic requests
+# - You need to configure it with helm:
+#
+#     helm install ingress-nginx/ingress-nginx --generate-name
+#     helm list
+#
+# - You need to target the service to its correct port, using the nginx annotations
+# Not 100% sure, followed instructions on internet:
+# setup ingress to serve static content on kubernetes -> https://github.com/nginxinc/kubernetes-ingress/issues/323

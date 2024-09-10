@@ -1,16 +1,15 @@
 const express = require("express");
-const logger = require("morgan");
 const cors = require("cors");
-const todosRouter = require("./routes/todos");
+const morgan = require("morgan");
 
-const PORT = process.env.PORT || 5555;
+const PORT = process.env.PORT || 5454;
 
 const app = express();
-app.use(cors());
-app.use(express.json());
-app.use(logger("dev"));
 
-app.use("/todos", todosRouter);
+app.use(cors());
+app.use(express.static("dist"));
+app.use(express.json());
+app.use(morgan("dev"));
 
 app.listen(PORT, () => {
   console.log(`Server listening to port: ${PORT}`);
