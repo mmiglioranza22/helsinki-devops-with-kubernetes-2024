@@ -1,0 +1,30 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  namespace: network-ping-log-ns
+  name: network-ping-log-app-ingress
+spec:
+  rules:
+    - http:
+        paths:
+          - path: /pingpong
+            pathType: Prefix
+            backend:
+              service:
+                name: network-ping-log-app-svc
+                port:
+                  number: 5151 # points to the port assigned to the read-write-app ClusterIp service (this is inside the cluster)
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: network-ping-log-app-svc
+                port:
+                  number: 5152 # points to the port assigned to the read-write-app ClusterIp service (this is inside the cluster)
+
+# A note on ports for same pod containers:
+
+# Note: check apps router precedence from more to less specific, same thing with ingress paths
+# If more than one pod/container has a "/" default path, all of them will be targeted and response will belong to the last? (check this)
+# Depending on the required solution, using different services for each application will be easier to avoid conflicts
+# ideally a app-name prefix could be added to all routers in source code ?

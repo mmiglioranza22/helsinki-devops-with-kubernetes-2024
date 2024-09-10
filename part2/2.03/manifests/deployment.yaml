@@ -1,0 +1,20 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  namespace: network-ping-log-ns
+  name: network-ping-log-app-dep
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: network-ping-log-app
+  template:
+    metadata:
+      labels:
+        app: network-ping-log-app
+    spec:
+      containers:
+        - name: ping-pong-service
+          image: mmiglioranza22/k8s-ex.2.01-ping-pong-service
+        - name: logger-service
+          image: mmiglioranza22/k8s-ex.2.01-logger-service
