@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
         - name: todo-app-frontend
-          image: mmiglioranza22/project-todo-app
+          image: mmiglioranza22/project-todo-app-frontend
           resources:
             requests:
               memory: "64Mi"

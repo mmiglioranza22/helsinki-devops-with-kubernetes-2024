@@ -4,7 +4,7 @@ const express = require("express");
 const cors = require("cors");
 const morgan = require("morgan");
 const axios = require("axios");
-const moment = require("moment/moment");
+const moment = require("../vite-app/node_modules/moment/ts3.1-typings/moment");
 
 const PORT = process.env.PORT || 5000;
 
@@ -79,22 +79,8 @@ const findAFile = async () => {
     console.log("No image. Fetching new image for first time...");
     await fetchImageAndSaveLog();
   }
-
-  // await new Promise((res) => fs.mkdir(directory, (err) => res()));
-  // const response = await axios.get("https://picsum.photos/200", {
-  //   responseType: "stream",
-  // });
-
-  // const now = moment().toString();
-  // await fs.promises.writeFile(fileSavedLogPath, now, (err) => {
-  //   if (err) throw err;
-  //   console.log("The file has been saved!");
-  // });
-  // console.log(`Image fetched at ${now}`);
-  // response.data.pipe(writableStream);
 };
 
-// fetch/save image
 const app = express();
 
 app.use(cors());
@@ -103,15 +89,15 @@ app.use(express.json());
 app.use(morgan("dev"));
 
 findAFile();
-app.get("/ping", async (req, res) => {
-  const lastSavedFileLog = await fs.promises.readFile(fileSavedLogPath);
-  res.send("pong: " + lastSavedFileLog);
-});
+// app.get("/ping", async (req, res) => {
+//   const lastSavedFileLog = await fs.promises.readFile(fileSavedLogPath);
+//   res.send("pong: " + lastSavedFileLog);
+// });
 
-app.get("/manual", async (req, res) => {
-  await fetchImageAndSaveLog();
-  res.send("ok");
-});
+// app.get("/manual", async (req, res) => {
+//   await fetchImageAndSaveLog();
+//   res.send("ok");
+// });
 
 app.listen(PORT, () => {
   console.log(`Server listening to port: ${PORT}`);
