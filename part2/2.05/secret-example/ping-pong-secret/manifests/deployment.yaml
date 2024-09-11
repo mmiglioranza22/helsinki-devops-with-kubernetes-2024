@@ -13,7 +13,7 @@ spec:
         app: ping-pong-secret-app
     spec:
       containers:
-        - name: ping-pong-secret
+        - name: ping-pong-app
           image: mmiglioranza22/k8s-ex.2.05-ping-pong-secret
           # 2 ways of setting secrets:
           # assuming the secret was set in source code as API_KEY env variable name
