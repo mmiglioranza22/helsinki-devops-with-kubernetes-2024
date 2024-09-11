@@ -1,0 +1,29 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: ping-pong-secret-dep
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: ping-pong-secret-app
+  template:
+    metadata:
+      labels:
+        app: ping-pong-secret-app
+    spec:
+      containers:
+        - name: ping-pong-secret
+          image: mmiglioranza22/k8s-ex.2.05-ping-pong-secret
+          # 2 ways of setting secrets:
+          # assuming the secret was set in source code as API_KEY env variable name
+          # envFrom:
+          #   - secretRef:
+          #       name: ping-pong-apikey -> metadata.name of Secret
+          # assuming the secret has any other name (chosen one is more declarative)
+          env:
+            - name: API_KEY # ENV name passed to container
+              valueFrom:
+                secretKeyRef:
+                  name: ping-pong-apikey # same thing
+                  key: API_KEY # ENV name in the secret

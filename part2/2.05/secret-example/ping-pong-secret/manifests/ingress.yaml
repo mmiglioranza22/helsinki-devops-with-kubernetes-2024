@@ -1,0 +1,15 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: ping-pong-secret-ingress
+spec:
+  rules:
+    - http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: ping-pong-secret-svc
+                port:
+                  number: 5151 # points to the port assigned to the read-write-app ClusterIp service (this is inside the cluster)

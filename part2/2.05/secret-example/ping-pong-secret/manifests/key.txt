@@ -1,0 +1,5 @@
+# This is an example api key file that should NEVER be pushed to remote
+
+# created: 2024-09-11T12:00:34-03:00
+# public key: age1529d7ycqn480mj37xf8ydtpmyyhzazlx752hfdejwdgekc6vaedsj3dtpp
+AGE-SECRET-KEY-1QNTTE4XD4G324VCR3DWW679PR7AZZQKXQMK4VF4TNPGULE3WCUPQ2RXPGY
