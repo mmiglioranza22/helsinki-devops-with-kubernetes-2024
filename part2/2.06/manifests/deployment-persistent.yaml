@@ -48,11 +48,10 @@ spec:
           configMap:
             # Provide the name of the ConfigMap you want to mount.
             name: configmap-ping-log-app-cm
-            # An array of keys from the ConfigMap to create as files
 # File is being mount alright, but mind this to check it:
 # - the container that has the config file is logger-service.
 # - accesing it via kubectl exec can(and will) chose a default container, which is ping-pong service (reason for which you will NOT see the config dir)
 # - use lens or specify the specific container in the exec command // https://stackoverflow.com/questions/74552547/defaulted-container-container-1-out-of-container-1-container-2
 #
-#     kubectl exec -it pods/configmap-ping-log-app-dep-... -c logger-service -- sh
+#     kubectl exec -it pods/configmap-ping-log-app-dep-... -c logger-service -- sh // https://stackoverflow.com/questions/51247619/execute-bash-command-in-pod-with-kubectl
 #
