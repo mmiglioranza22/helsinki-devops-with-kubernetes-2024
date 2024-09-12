@@ -2,6 +2,7 @@ const express = require("express");
 const cors = require("cors");
 const morgan = require("morgan");
 const { ping } = require("./ping");
+const { connectToDatabase } = require("./db");
 
 const app = express();
 
@@ -16,7 +17,10 @@ app.get("/pingpong", async (req, res) => {
   res.send("pong saved to db");
 });
 
-app.listen(PORT, () => {
+app.listen(PORT, async () => {
   console.log("Pingpong app: Started");
   console.log(`Server listening to port: ${PORT}`);
+  console.log("Connecting to db...");
+  await connectToDatabase();
+  console.log("Connected!");
 });
