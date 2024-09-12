@@ -5,7 +5,9 @@ metadata:
 data:
   # property-like keys; each key maps to a simple value
   MESSAGE: "hello world"
-  information.txt: "file.content" # this is needed to reference content inside a file
-  # file-like keys
-  file.content: |
-    "this text is from file"
+  # configmap as file
+  # https://stackoverflow.com/questions/49478036/populate-configmap-by-importing-data-from-file-in-k8s
+  # https://stackoverflow.com/questions/68133280/how-to-create-a-volume-that-mounts-a-file-which-its-path-configured-in-a-config
+  information.txt: |
+    This is the content of the file (supposedly)
+    It supports multiple lines but do take care of the indentation.

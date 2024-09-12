@@ -26,15 +26,18 @@ spec:
                 configMapKeyRef:
                   name: configmap-ping-log-app-cm # the configmap from which the value comes.
                   key: MESSAGE # the key to fetch
-            - name: INFORMATION_FILE
-              valueFrom:
-                configMapKeyRef:
-                  name: configmap-ping-log-app-cm
-                  key: information.txt # This is used to reference the key in the configmap (the value "file.content" will be referenced as a key in volumes prop)
+            # - name: INFORMATION_FILE
+            #   valueFrom:
+            #     configMapKeyRef:
+            #       name: configmap-ping-log-app-cm
+            #       key: information.txt # This is used to reference the key in the configmap (the value "file.content" will be referenced as a key in volumes prop)
           volumeMounts:
-            - name: config-map
+            # remember 1 mount per volume (pv, configmap), mountPath must be unique for each
+            - name: shared-logs
               mountPath: /usr/src/app/files
-              readOnly: true
+            - name: config-map
+              mountPath: /usr/src/app/config
+              # readOnly: true
       volumes:
         # Persistent volumes can be combined with configMaps volumes
         - name: shared-logs
@@ -46,6 +49,10 @@ spec:
             # Provide the name of the ConfigMap you want to mount.
             name: configmap-ping-log-app-cm
             # An array of keys from the ConfigMap to create as files
-            items:
-              - key: "file.content"
-                path: "file.content"
+# File is being mount alright, but mind this to check it:
+# - the container that has the config file is logger-service.
+# - accesing it via kubectl exec can(and will) chose a default container, which is ping-pong service (reason for which you will NOT see the config dir)
+# - use lens or specify the specific container in the exec command // https://stackoverflow.com/questions/74552547/defaulted-container-container-1-out-of-container-1-container-2
+#
+#     kubectl exec -it pods/configmap-ping-log-app-dep-... -c logger-service -- sh
+#
