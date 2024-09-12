@@ -1,0 +1,49 @@
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  name: statefull-ping-app-stset
+spec:
+  serviceName: postgres-svc
+  replicas: 2
+  selector:
+    matchLabels:
+      app: statefull-ping-app
+  template:
+    metadata:
+      labels:
+        app: statefull-ping-app
+    spec:
+      containers:
+        - name: postgres-db # logger writes/reads and GETS
+          image: postgres
+          ports:
+            - name: db
+              containerPort: 5432
+          volumeMounts:
+            - name: postgres-database
+              mountPath: /usr/src/app/data
+  volumeClaimTemplates:
+    - metadata:
+        name: postgres-database # same as volumeMount.name
+      spec:
+        accessModes: ["ReadWriteOnce"]
+        storageClassName: local-path
+        resources:
+          requests:
+            storage: 100Mi
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: postgres-svc
+  labels:
+    app: postgres-db # the chosen container name
+spec:
+  ports:
+    - port: 5432
+      name: db
+      # protocol: TCP is this needed?
+      # targetPort: 5432
+  clusterIP: None # this is necessary to ensure pods identity stays the same (for network and name)
+  selector:
+    app: statefull-ping-app

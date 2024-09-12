@@ -1,0 +1,13 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: ping-pong-svc
+spec:
+  type: ClusterIP
+  selector:
+    app: ping-pong-app
+  ports:
+    - name: ping-pong
+      port: 5151
+      protocol: TCP
+      targetPort: 3000 # The app's exposed port (defined 3000 in the source code)

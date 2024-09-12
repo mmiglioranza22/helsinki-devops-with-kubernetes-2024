@@ -1,0 +1,10 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: ping-pong-pod
+spec:
+  containers:
+    - name: ping-pong-app
+      image: mmiglioranza22/k8s-ex.2.08-ping-pong-service
+      # ports:
+      # - containerPort: 3000

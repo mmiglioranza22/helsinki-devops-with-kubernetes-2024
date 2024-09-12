@@ -1,0 +1,24 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: statefull-ping-app-ingress
+spec:
+  rules:
+    - http:
+        paths:
+          - path: /pingpong
+            pathType: Prefix
+            backend:
+              service:
+                name: configmap-ping-log-app-svc
+                port:
+                  number: 5151 # points to the port assigned to the read-write-app ClusterIp service (this is inside the cluster)
+
+# A note on ports for same pod containers
+# This can be done as long as the same service points to different ports, each mapped to the respective targetPort (the one decided for the app PORT env var)
+# However, there is 1 path that, targeted to "/", will map to the apps "/hash" route used.
+# For "/pingpong" path, this maps correctly to "/pingpong" route in that app.
+
+# Did not figured out yet if the "/" is a requisite for ingress when using same service containers, or if I need to modify something in the app altogether
+
+# Note: Issue is most likely related to routers path precedence and using GET in all cases. Check apps router precedence from more to less specific, same thing with ingress paths
