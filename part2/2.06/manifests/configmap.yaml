@@ -1,0 +1,11 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: configmap-ping-log-app-cm
+data:
+  # property-like keys; each key maps to a simple value
+  MESSAGE: "hello world"
+  information.txt: "file.content" # this is needed to reference content inside a file
+  # file-like keys
+  file.content: |
+    "this text is from file"
