@@ -12,7 +12,8 @@ app.use(express.json());
 app.use(logger("dev"));
 
 app.use("/api/todos", todosRouter);
-
+// with the database, startup might not wait for it to start, so first request can fail
+// a readiness check could help fixing this
 app.listen(PORT, async () => {
   console.log("Todo-backend api: Started");
   console.log(`Server listening to port: ${PORT}`);
