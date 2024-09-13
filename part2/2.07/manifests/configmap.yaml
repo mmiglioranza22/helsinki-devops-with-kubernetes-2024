@@ -5,7 +5,7 @@ metadata:
   labels:
     app: postgres
 data:
-  POSTGRES_DB: postgres
-  POSTGRES_USER: postgres
-  POSTGRES_HOST: localhost
+  POSTGRES_DB: "postgres"
+  POSTGRES_USER: "postgres"
+  POSTGRES_HOST: "postgres-svc" # host points to the service running the postgres image connection (stateful set)
   POSTGRES_PORT: "5432"

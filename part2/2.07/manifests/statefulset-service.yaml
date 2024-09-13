@@ -4,7 +4,7 @@ metadata:
   name: postgres-db-stset
 spec:
   serviceName: postgres-svc
-  replicas: 2
+  replicas: 1
   selector:
     matchLabels:
       app: postgres-db
@@ -16,9 +16,9 @@ spec:
       containers:
         - name: postgres-db-container
           image: postgres
-          envFrom:
-            - configMapRef:
-                name: postgres-config
+          # envFrom:
+          #   - configMapRef:
+          #       name: postgres-config
           env:
             - name: POSTGRES_PASSWORD
               valueFrom:
@@ -49,10 +49,9 @@ metadata:
     app: postgres-db # the chosen container name
 spec:
   ports:
-    - name: db
-      port: 5432
-      protocol: TCP # is this needed?
-      targetPort: 5432
+    - port: 5432
+      name: db
+
   clusterIP: None # this is necessary to ensure pods identity stays the same (for network and name)
   selector:
     app: postgres-db

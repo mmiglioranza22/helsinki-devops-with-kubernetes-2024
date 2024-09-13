@@ -8,6 +8,6 @@ spec:
     app: ping-pong-app
   ports:
     - name: ping-pong
-      port: 5151
+      port: 3000
       protocol: TCP
       targetPort: 3000 # The app's exposed port (defined 3000 in the source code)

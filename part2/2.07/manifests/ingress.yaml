@@ -6,13 +6,13 @@ spec:
   rules:
     - http:
         paths:
-          - path: /
+          - path: /pingpong
             pathType: Prefix
             backend:
               service:
                 name: ping-pong-svc
                 port:
-                  number: 5151 # points to the port assigned to the read-write-app ClusterIp service (this is inside the cluster)
+                  number: 3000 # points to the port assigned to the read-write-app ClusterIp service (this is inside the cluster)
 
 # A note on ports for same pod containers
 # This can be done as long as the same service points to different ports, each mapped to the respective targetPort (the one decided for the app PORT env var)
