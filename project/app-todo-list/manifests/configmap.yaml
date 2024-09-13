@@ -1,0 +1,12 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: postgres-config
+  namespace: todo-app-ns
+  labels:
+    app: postgres
+data:
+  POSTGRES_DB: "postgres"
+  POSTGRES_USER: "postgres"
+  POSTGRES_HOST: "postgres-svc" # host points to the service running the postgres image connection (stateful set)
+  POSTGRES_PORT: "5432"

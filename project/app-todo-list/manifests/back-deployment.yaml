@@ -16,6 +16,15 @@ spec:
       containers:
         - name: todo-app-backend
           image: mmiglioranza22/project-todo-app-backend
+          envFrom:
+            - configMapRef:
+                name: postgres-config
+          env:
+            - name: POSTGRES_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: postgres-secret
+                  key: POSTGRES_PASSWORD
           resources:
             requests:
               memory: "64Mi"

@@ -1,7 +1,8 @@
 import axios from "axios";
 
+const baseUrl = import.meta.env.VITE_BACKEND_URL || "http://localhost:8081"; // dev port or k3d port (serve-vite can't run this since vite env is not being mapped there)
 const apiClient = axios.create({
-  baseURL: "http://localhost:8081",
+  baseURL: baseUrl,
   // process.env.VITE_BACKEND_URL ||
   // import.meta.env.VITE_BACKEND_URL ||
   // "http://localhost:5555",
