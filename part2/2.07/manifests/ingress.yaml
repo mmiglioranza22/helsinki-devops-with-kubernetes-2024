@@ -6,11 +6,11 @@ spec:
   rules:
     - http:
         paths:
-          - path: /pingpong
+          - path: /
             pathType: Prefix
             backend:
               service:
-                name: configmap-ping-log-app-svc
+                name: ping-pong-svc
                 port:
                   number: 5151 # points to the port assigned to the read-write-app ClusterIp service (this is inside the cluster)
 
