@@ -55,4 +55,4 @@ spec:
       targetPort: 5432
   clusterIP: None # this is necessary to ensure pods identity stays the same (for network and name)
   selector:
-    app: statefull-ping-app
+    app: postgres-db

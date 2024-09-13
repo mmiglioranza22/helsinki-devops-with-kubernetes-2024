@@ -15,6 +15,13 @@ const sequelize = new Sequelize(DATABASE_URL); // Example for postgres
 
 const connectToDatabase = async () => {
   try {
+    console.log({
+      db: process.env.POSTGRES_DB,
+      user: process.env.POSTGRES_USER,
+      pass: process.env.POSTGRES_PASSWORD,
+      host: process.env.POSTGRES_HOST,
+      port: process.env.POSTGRES_PORT,
+    });
     console.log(DATABASE_URL);
     await sequelize.authenticate();
     console.log("connected to the database");
