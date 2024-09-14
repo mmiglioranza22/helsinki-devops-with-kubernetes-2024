@@ -7,7 +7,7 @@ spec:
   rules:
     - http:
         paths:
-          - path: /api/todos
+          - path: /api/todos # this is the path when being targeted from the inside and outside of the cluster (host machine).
             pathType: Prefix
             backend:
               service:

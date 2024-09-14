@@ -5,7 +5,7 @@ if [ $INTERNAL_BACKEND_URL ]; then
 	echo backend url: $INTERNAL_BACKEND_URL
 	TODO=$(curl -Ls -o /dev/null -w %{url_effective} https://en.wikipedia.org/wiki/Special:Random)
 	echo Read: $TODO
-	curl -X POST $INTERNAL_BACKEND_URL -H 'Content-Type: application/json' -d '{"todo": "Read '${TODO}'"}'
+	curl -X POST $INTERNAL_BACKEND_URL -H 'Content-Type: application/json' -d '{"text": "Read '${TODO}'"}'
 fi
 
 # https://stackoverflow.com/questions/3074288/get-final-url-after-curl-is-redirected

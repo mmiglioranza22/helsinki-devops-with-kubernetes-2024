@@ -2,6 +2,8 @@ FROM alpine/curl
 
 WORKDIR /usr/src/app
 
-COPY cronjob.sh ./
+COPY cronjob.sh .
 
-CMD [ "./cronjob.sh" ]
+RUN ["chmod", "+x", "cronjob.sh"]
+
+CMD ["sh", "cronjob.sh" ]

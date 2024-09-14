@@ -4,6 +4,7 @@ metadata:
   name: todo-cronjob
   namespace: todo-app-ns
 spec:
+  # https://crontab.guru/
   ########## ┌───────────── minute (0 - 59)
   ########## │ ┌───────────── hour (0 - 23)
   ########## │ │ ┌───────────── day of the month (1 - 31)
@@ -13,15 +14,15 @@ spec:
   ########## │ │ │ │ │
   ########## │ │ │ │ │
   ########## * * * * *
-  schedule: "2 * * * *"
+  schedule: "*/1 * * * *"
   jobTemplate:
     spec:
       template:
         spec:
           containers:
             - name: curl-todo
-              image: mmiglioranza22/k8s-ex.2.09-cronjob-todo-curl
+              image: mmiglioranza22/k8s-ex.2.09-cronjob-curl-script
               env:
                 - name: INTERNAL_BACKEND_URL
-                  value: http://todo-app-backend-svc:1234/api/todos # ALWAYS THE SERVICE-NAME:PORT
+                  value: "http://todo-app-backend-svc:1234/api/todos" # ALWAYS THE SERVICE-NAME:PORT
           restartPolicy: OnFailure
