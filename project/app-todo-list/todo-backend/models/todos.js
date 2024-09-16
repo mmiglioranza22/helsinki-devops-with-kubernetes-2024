@@ -12,6 +12,10 @@ Todo.init(
     },
     text: {
       type: DataTypes.STRING,
+      validate: {
+        min: 5,
+        max: 140,
+      },
     },
   },
   {
