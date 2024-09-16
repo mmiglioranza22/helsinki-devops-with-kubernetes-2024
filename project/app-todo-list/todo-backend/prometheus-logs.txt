@@ -1,0 +1,12 @@
+
+Installing prometheus / grafana / loki
+
+kubectl create namespace prometheus
+kubectl -n prometheus port-forward <kube-prometheus-stack-graphana> <port> (ex 3000) (credentials: admin / prom-operator)
+
+kubectl create namespace loki-stack
+kubectl get all -n loki-stack
+
+check  service/loki PORT (usually 3100)
+
+Add loki data source (http://service-name.namespace:port -> http://loki.loki-stack:3100)

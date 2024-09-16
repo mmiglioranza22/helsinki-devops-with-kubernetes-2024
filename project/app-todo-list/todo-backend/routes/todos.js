@@ -14,6 +14,7 @@ router.post("/", async (req, res) => {
   try {
     const { error, value } = todoSchema.validate(text);
     if (error) {
+      console.log({ text });
       throw error;
     } else {
       const todo = await Todo.create({ text: value });
