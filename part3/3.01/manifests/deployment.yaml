@@ -1,0 +1,42 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: ping-pong-dep
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: ping-pong-app
+  template:
+    metadata:
+      labels:
+        app: ping-pong-app
+    spec:
+      containers:
+        - name: ping-pong-app
+          image: mmiglioranza22/k8s-ex.2.08-ping-pong-service
+          imagePullPolicy: Always # without this, GKE will cache the image each time
+          resources:
+            limits:
+              cpu: "100m"
+              memory: "512Mi"
+          # readinessProbe:
+          #   initialDelaySeconds: 15
+          #   periodSeconds: 10
+          #   httpGet:
+          #     path: /connected
+          #     port: 3000
+          envFrom:
+            - configMapRef:
+                name: postgres-config
+          env:
+            - name: POSTGRES_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: postgres-secret
+                  key: POSTGRES_PASSWORD
+# Common error: exec /usr/local/bin/docker-entrypoint.sh: exec format error --> Add platform on Dockerfile and build with it or:
+#
+#   docker buildx build --platform linux/amd64 -t k8s-ex.2.08-ping-pong-service .
+#
+# https://stackoverflow.com/questions/77355846/exec-usr-local-bin-docker-entrypoint-sh-exec-format-error
