@@ -1,0 +1,29 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: network-ping-log-app-dep
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: network-ping-log-app
+  template:
+    metadata:
+      labels:
+        app: network-ping-log-app
+    spec:
+      containers:
+        - name: ping-pong-service
+          image: mmiglioranza22/k8s-ex.3.02-ping-pong-service
+          imagePullPolicy: Always # without this, GKE will cache the image each time
+          resources:
+            limits:
+              cpu: "100m"
+              memory: "512Mi"
+        - name: logger-service
+          image: mmiglioranza22/k8s-ex.3.02-logger-service
+          imagePullPolicy: Always # without this, GKE will cache the image each time
+          resources:
+            limits:
+              cpu: "100m"
+              memory: "512Mi"
