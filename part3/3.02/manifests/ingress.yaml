@@ -23,3 +23,4 @@ spec:
 
 # In GKE,  The Ingress performs health checks by GET requesting / and expects an HTTP 200 response.
 # Reason you will see constant activity
+# https://cloud.google.com/kubernetes-engine/docs/how-to/exposing-apps
