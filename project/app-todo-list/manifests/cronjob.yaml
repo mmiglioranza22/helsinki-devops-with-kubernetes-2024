@@ -21,7 +21,7 @@ spec:
         spec:
           containers:
             - name: curl-todo
-              image: mmiglioranza22/k8s-ex.2.09-cronjob-curl-script
+              image: CRON_IMAGE
               env:
                 - name: INTERNAL_BACKEND_URL
                   value: "http://todo-app-backend-svc:1234/api/todos" # ALWAYS THE SERVICE-NAME:PORT

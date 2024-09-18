@@ -1,4 +1,4 @@
-FROM alpine/curl
+FROM --platform=linux/amd64 alpine/curl
 
 WORKDIR /usr/src/app
 

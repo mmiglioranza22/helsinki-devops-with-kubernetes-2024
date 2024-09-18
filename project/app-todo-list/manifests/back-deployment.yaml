@@ -15,7 +15,7 @@ spec:
     spec:
       containers:
         - name: todo-app-backend
-          image: mmiglioranza22/project-todo-app-backend
+          image: BACK_IMAGE
           envFrom:
             - configMapRef:
                 name: postgres-config

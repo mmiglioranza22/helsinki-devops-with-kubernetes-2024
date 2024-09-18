@@ -15,7 +15,7 @@ spec:
     spec:
       containers:
         - name: todo-app-frontend
-          image: mmiglioranza22/project-todo-app-frontend
+          image: FRONT_IMAGE
           # env:
           #   - name: VITE_BACKEND_URL
           #     value: http://todo-app-backend-svc:1234 does not work,

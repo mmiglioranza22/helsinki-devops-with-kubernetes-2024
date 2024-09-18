@@ -1,0 +1,79 @@
+name: Release application
+
+# build the image
+# publish the image to a container registry (GKE in this case)
+# deploy the new image to our (GKE)
+on:
+  push:
+    branches:
+      - main
+    # Added specifically to avoid creating other repo and running actions from this directory only for express-app
+    paths:
+      - "project/app-todo-list/**"
+      - ".github/workflows/3.03.yml"
+env:
+  PROJECT_ID: ${{ secrets.GKE_PROJECT }}
+  GKE_CLUSTER: dwk-cluster
+  GKE_ZONE: us-central1-a
+  IMAGE: dwk-environments
+  SERVICE: dwk-environments
+  BRANCH: ${{ github.ref_name }}
+
+jobs:
+  build-publish-deploy:
+    name: Build, Publish and Deploy
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Authenticate against GKE
+        uses: google-github-actions/auth@v2
+        with:
+          credentials_json: "${{ secrets.GKE_SA_KEY }}"
+
+      - name: Set up Cloud SDK
+        uses: google-github-actions/setup-gcloud@v2
+
+      - name: Use gcloud CLI
+        run: gcloud info
+
+      - name: "Configure Docker in gcloud"
+        run: gcloud --quiet auth configure-docker
+
+      - name: "Get GKE credentials"
+        uses: "google-github-actions/get-gke-credentials@v2"
+        with:
+          cluster_name: "${{ env.GKE_CLUSTER }}"
+          project_id: "${{ env.PROJECT_ID }}"
+          location: "${{ env.GKE_ZONE }}"
+
+      - name: Build
+        run: docker build --tag "gcr.io/$PROJECT_ID/$IMAGE:$BRANCH-$GITHUB_SHA" .
+
+      - name: Publish
+        run: docker push "gcr.io/$PROJECT_ID/$IMAGE:$BRANCH-$GITHUB_SHA"
+
+      - name: Set up Kustomize
+        uses: imranismail/setup-kustomize@v2.1
+
+      - name: Deploy
+        run: |-
+          kustomize edit set image PROJECT/IMAGE=gcr.io/$PROJECT_ID/$IMAGE:$BRANCH-$GITHUB_SHA
+          kustomize build . | kubectl apply -f -
+          kubectl rollout status deployment $SERVICE
+          kubectl get services -o wide
+
+  # deploy-to-render:
+  #   name: Deploy image to Render
+  #   runs-on: ubuntu-latest
+  #   steps:
+  #     - uses: actions/checkout@v2
+  #     - name: Render Deployment
+  #       uses: sws2apps/render-deployment@v1.7.0
+  #       # condition to test it works, commit message #skip does not trigger deploy
+  #       if: ${{ github.event_name == 'push' && !contains(toJson(github.event.commits.*.message), '#skip')}}
+  #       with:
+  #         serviceId: ${{ secrets.RENDER_SERVICE_ID }}
+  #         apiKey: ${{ secrets.RENDER_API_KEY }}
+  #         multipleDeployment: false
