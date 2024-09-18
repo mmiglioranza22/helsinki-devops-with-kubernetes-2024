@@ -38,11 +38,11 @@ jobs:
       - name: Use gcloud CLI
         run: gcloud info
 
-      - name: "Configure Docker in gcloud"
+      - name: Configure Docker in gcloud
         run: gcloud --quiet auth configure-docker
 
-      - name: "Get GKE credentials"
-        uses: "google-github-actions/get-gke-credentials@v2"
+      - name: Get GKE credentials
+        uses: google-github-actions/get-gke-credentials@v2
         with:
           cluster_name: "${{ env.GKE_CLUSTER }}"
           project_id: "${{ env.PROJECT_ID }}"
@@ -63,17 +63,3 @@ jobs:
           kustomize build . | kubectl apply -f -
           kubectl rollout status deployment $SERVICE
           kubectl get services -o wide
-
-  # deploy-to-render:
-  #   name: Deploy image to Render
-  #   runs-on: ubuntu-latest
-  #   steps:
-  #     - uses: actions/checkout@v2
-  #     - name: Render Deployment
-  #       uses: sws2apps/render-deployment@v1.7.0
-  #       # condition to test it works, commit message #skip does not trigger deploy
-  #       if: ${{ github.event_name == 'push' && !contains(toJson(github.event.commits.*.message), '#skip')}}
-  #       with:
-  #         serviceId: ${{ secrets.RENDER_SERVICE_ID }}
-  #         apiKey: ${{ secrets.RENDER_API_KEY }}
-  #         multipleDeployment: false
